@@ -9,9 +9,9 @@ Welcome to Librement's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
-
+   specs/index
 
 Indices and tables
 ==================
