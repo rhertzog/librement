@@ -29,6 +29,7 @@ its appearance and its behaviour:
 
 * payment options
 * button image URL
+* button text (alt attribute if image is used)
 * various URL where the user can be redirected:
 
   * back to shop URL
