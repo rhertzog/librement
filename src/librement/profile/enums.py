@@ -1,5 +1,11 @@
 from django_enumfield import Item, make_enum
 
+AccountEnum = make_enum('AccountEnum',
+    Item(0, 'individual', "Individual"),
+    Item(1, 'company', "Company"),
+    Item(2, 'non_profit', "Non-profit"),
+)
+
 CountryEnum = make_enum('CountryEnum',
     Item(1, 'af', "Afghanistan"),
     Item(2, 'al', "Albania"),
