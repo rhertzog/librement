@@ -6,6 +6,15 @@
 
   <h1 class="page-title">Register</h1>
 
+  <form method="POST" action="">
+    {% csrf_token %}
+
+    {{ form }}
+
+    <div class="well">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
 
 </section>
 
