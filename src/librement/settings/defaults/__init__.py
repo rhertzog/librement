@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'south',
 
     'librement.registration',
+    'librement.profile',
     'librement.static',
     'librement.utils',
 )
