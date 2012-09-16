@@ -1,0 +1,60 @@
+#!/bin/sh
+
+set -eu
+
+if [ "${1:-}" = "" ]
+then
+	echo "${0}: Please specify a project to upgrade" >&2
+	exit 1
+fi
+
+PROJECT="${1}"
+
+Git () {
+	URL="${1}"
+	TARGET="${2}"
+	SUBDIR="${3:-}"
+
+	rm -rf ${TARGET}
+	mkdir ${TARGET}
+	git clone "${URL}" ${TARGET}/.clone
+	git --git-dir=${TARGET}/.clone/.git log --stat > ${TARGET}/git.log
+	mv ${TARGET}/.clone/${SUBDIR}/* ${TARGET}
+	rm -rf ${TARGET}/.clone
+}
+
+case "${PROJECT}" in
+	--all)
+		for DIR in $(find -mindepth 1 -maxdepth 1 -type d -not -name '_*' -printf '%f\n')
+		do
+			printf "\nUpdate %s? [Y/n] " ${DIR}
+			read X
+			case "${X}" in
+				Y|y|"")
+					${0} "${DIR}" || true
+					;;
+			esac
+		done
+
+		exit 0
+		;;
+
+	*)
+		echo "${0}: Unknown project '${PROJECT}'" >&2
+		exit 1
+		;;
+esac
+
+export QUILT_PATCHES="$(pwd)/_patches/${PROJECT}"
+HOOK="$(pwd)/_hooks/${PROJECT}"
+
+cd ${PROJECT}
+
+quilt --quiltrc /dev/null push -a || test ${?} = 2
+rm -rf ./.pc
+
+if [ -x "${HOOK}" ]
+then
+	echo "I: Running hook ${HOOK}..."
+	${HOOK}
+fi
