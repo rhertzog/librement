@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}500 Internal Server Error - {{ block.super }}{% endblock %}
+
+{% block container %}
+
+<section id="500">
+  <h3>It looks as though we've broken something on our system.</h3>
+
+  <p>
+    We have been notified about the issue, but if the problem persists please
+    email <a href="mailto:webmaster@librement.net">webmaster@librement.net</a> with more
+    information.
+  </p>
+</section>
+
+{% endblock %}
