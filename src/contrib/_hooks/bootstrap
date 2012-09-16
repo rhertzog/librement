@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Requires `node-less`.
+lessc less/bootstrap.less > bootstrap.css
+
+rm -rf docs/
+rm -rf less/
+rm -rf js/tests/
