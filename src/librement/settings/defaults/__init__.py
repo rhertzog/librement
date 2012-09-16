@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'debug_toolbar_user_panel',
     'south',
 
+    'librement.registration',
     'librement.static',
     'librement.utils',
 )
