@@ -24,6 +24,10 @@ Git () {
 }
 
 case "${PROJECT}" in
+	bootstrap)
+		Git git://github.com/twitter/bootstrap.git ${PROJECT}
+		;;
+
 	jquery)
 		mkdir -p ${PROJECT}
 		wget -Ojquery/jquery.js http://code.jquery.com/jquery.js
