@@ -1,0 +1,361 @@
+commit 016ea548ce8084d8629b2bce4f0679f6b5bf7515
+Merge: b212727 a8c3c97
+Author: Chris Lamb <lamby@debian.org>
+Date:   Fri Aug 3 12:57:17 2012 -0700
+
+    Merge pull request #13 from dstegelman/patch-1-1
+    
+    Adding new debug setting to allow the use of the user panel when DEBUG is False
+
+commit a8c3c97d04bb825c15b3620b8412256bf1ea8c38
+Author: Derek Stegelman <dstegelman@gmail.com>
+Date:   Thu Aug 2 21:18:54 2012 -0500
+
+    Adding new debug setting to allow the user of the user panel when DEBUG = False
+
+ debug_toolbar_user_panel/decorators.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit b212727fa38914fe9f41cca2a4ac5e9c0be93629
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Jun 20 22:38:54 2012 +0100
+
+    Check that we are in debug mode before doing anything (Closes: #10)
+    
+    This closes a security hole if you had exposed the debug toolbar URLs in
+    production.
+    
+    Many thanks to Sam Solomon (sssbox@gmail.com) to reporting the issue.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/decorators.py |   12 ++++++++++++
+ debug_toolbar_user_panel/views.py      |    4 ++++
+ 2 files changed, 16 insertions(+), 0 deletions(-)
+
+commit abb741df203881133258ca0d0e216c6e0d69cfa0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jun 15 15:12:00 2012 +0100
+
+    We're given this in the rendering context now, not in the runtime JS env.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .../templates/debug_toolbar_user_panel/panel.html  |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 7c4f6a813fbdcb21f595ee4acc20c2c169472b5e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue May 8 10:26:14 2012 +0100
+
+    Add missing "{% load url from future %}"
+
+ .../debug_toolbar_user_panel/content.html          |    2 ++
+ .../templates/debug_toolbar_user_panel/panel.html  |    2 ++
+ 2 files changed, 4 insertions(+), 0 deletions(-)
+
+commit 51f5c4560ab0f080d82df85dfc33ab67ef9f6233
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Apr 30 13:57:20 2012 +0100
+
+    These need quotes now.
+
+ .../debug_toolbar_user_panel/content.html          |    4 ++--
+ .../templates/debug_toolbar_user_panel/panel.html  |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit bbd7be6093cbc4b29dc33e644c320a0e9cc058c3
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 30 17:29:31 2012 +0000
+
+    Don't rely on CSS class. Thanks to Visgean Skeloru.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .../debug_toolbar_user_panel/content.html          |    2 +-
+ .../templates/debug_toolbar_user_panel/panel.html  |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b4606e2cc4e96d3509e7961927e7b71d23521684
+Merge: 958091e 2e5b03c
+Author: Chris Lamb <chris@chris-lamb.co.uk>
+Date:   Thu Nov 10 06:40:34 2011 -0800
+
+    Merge pull request #4 from jor123/master
+    
+    Allow negative user ids
+
+commit 2e5b03c6219e6a2dd350c49b575e36d623b99d1c
+Author: jor123 <jor123@gmail.com>
+Date:   Thu Nov 10 15:29:07 2011 +0100
+
+    Allow negative User ids
+    
+    django guardian requires an 'anoymous user id' setting.
+    In projects using guardian, this is often configured to be '-1'
+
+ debug_toolbar_user_panel/urls.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 958091e4acfbcfa951400aec0b82723b7a8caad9
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Sep 19 16:58:46 2011 +0100
+
+    Just use distutils as life is too short. Closes: #2
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ setup.py |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 6415709d22476ea5bd73f055e4925837b886a215
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:25:32 2011 +0100
+
+    Include templates in setuptools' package_data. Closes GH-2.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ setup.py |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+commit 4dac16fd83e725c0a52d0fc49551efed37f00ac3
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:06:55 2011 +0100
+
+    Typo and reorder.
+
+ debug_toolbar_user_panel/panels.py |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+commit e6f22e23df4448e5648da067e1aafbea04eecf01
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:04:22 2011 +0100
+
+    Add README.rst
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ README.rst |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+commit e410687cb48bf4d28b98301d179c0da79e83fc65
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 14:15:45 2011 +0100
+
+    Better screenshot border.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ docs/screenshot.png |  Bin 82916 -> 88643 bytes
+ 1 files changed, 0 insertions(+), 0 deletions(-)
+
+commit c761663c7fc07d8c0e96abe6f78e9aed4683bfc5
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 14:13:53 2011 +0100
+
+    Add documentation.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/panels.py |   61 ++++++++++++++++++++++++++++++++++++
+ docs/screenshot.png                |  Bin 0 -> 82916 bytes
+ 2 files changed, 61 insertions(+), 0 deletions(-)
+
+commit 5025bedb2229f4468622de5c323bb6a186d74349
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 14:13:07 2011 +0100
+
+    Add documentation base.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ docs/Makefile     |   80 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ docs/conf.py      |   16 ++++++++++
+ docs/index.rst    |    1 +
+ docs/playfire.png |  Bin 0 -> 6037 bytes
+ 4 files changed, 97 insertions(+), 0 deletions(-)
+
+commit 448dd299f45f329300879e8c1727846423b233f2
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 13:47:23 2011 +0100
+
+    Use the debug toolbar's jQuery if we don't already have one. Closes: GH-1
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .../templates/debug_toolbar_user_panel/panel.html  |   17 +++++++++++++++++
+ 1 files changed, 17 insertions(+), 0 deletions(-)
+
+commit 0db2c45d487af30ca0460fd6e2449d8bdeb348ae
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Mar 22 12:00:13 2011 +0000
+
+    Add setup.py file
+
+ setup.py |   17 +++++++++++++++++
+ 1 files changed, 17 insertions(+), 0 deletions(-)
+
+commit bf8e2d40aee0e5e9d01ba8338a451b5beb2ff18e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Feb 23 21:22:26 2011 +0000
+
+    Don't require CSRF protection when interacting with the form.
+    
+    If your debug toolbar is publically accessible you've probably got bigger
+    problems.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/views.py |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+commit bd5933b6ef4ee3c65f1acb847687ceef9cc50cc0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Feb 23 21:19:26 2011 +0000
+
+    Don't display 'AnonymousUser' in debug panel when logged out.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/panels.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 9dae12de48cd2260b5aeecf41f00581434345b68
+Author: Chris Lamb <chris@playfire.com>
+Date:   Sun Feb 20 22:36:25 2011 +0000
+
+    Don't assume that User instances have a username - rely on their __unicode__
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/panels.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 9641fd97e69c682cfd8bb9386bdaeae0cd894475
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Feb 9 13:34:04 2011 +0000
+
+    Add form to login as any user.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .../debug_toolbar_user_panel/content.html          |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+commit e7810c508f84e07187c510be827a5f2ddc8efbf8
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Feb 9 12:19:03 2011 +0000
+
+    Add form to panel that will accept a username, email or User primary key.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/forms.py |   17 +++++++++++++++++
+ debug_toolbar_user_panel/urls.py  |    4 +++-
+ debug_toolbar_user_panel/views.py |   19 +++++++++++++++----
+ 3 files changed, 35 insertions(+), 5 deletions(-)
+
+commit e1155bcc12b8178475b5ff2e1485d6c9ab6f2ea5
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Feb 9 12:18:26 2011 +0000
+
+    Reduce the number of recent users we display.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/views.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit b538cdbeba3a43e7119cde27f8348a34959b5176
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 15:00:37 2011 +0000
+
+    Don't break when logged out.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/views.py |   13 +++++++------
+ 1 files changed, 7 insertions(+), 6 deletions(-)
+
+commit d8a85c42079ceda2be4ec8283c4163812529bcef
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 15:00:04 2011 +0000
+
+    Remove horrible debug wrapper, oops.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/views.py |   29 ++++++++++++-----------------
+ 1 files changed, 12 insertions(+), 17 deletions(-)
+
+commit c517e1be086e3f98805e2047958790319c431c6c
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:58:32 2011 +0000
+
+    Only load data once.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .../templates/debug_toolbar_user_panel/panel.html  |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+commit 35983e622571dd11ba7a18d105280699cc187a5b
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:58:23 2011 +0000
+
+    Remove readme.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ README.rst |    4 ----
+ 1 files changed, 0 insertions(+), 4 deletions(-)
+
+commit d77ccb1aa1f76e510e6a7ddd6be65066ece81392
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:44:16 2011 +0000
+
+    Add README.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ README.rst |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+commit 0642c6b55f1b523c5cfc0d2dbe6a2c9abeae19a9
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:41:44 2011 +0000
+
+    Initial commit.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ debug_toolbar_user_panel/models.py                 |    9 +++++
+ debug_toolbar_user_panel/panels.py                 |   35 ++++++++++++++++++
+ .../debug_toolbar_user_panel/content.html          |   26 +++++++++++++
+ .../templates/debug_toolbar_user_panel/panel.html  |   29 +++++++++++++++
+ debug_toolbar_user_panel/urls.py                   |   10 +++++
+ debug_toolbar_user_panel/views.py                  |   38 ++++++++++++++++++++
+ 6 files changed, 147 insertions(+), 0 deletions(-)
+
+commit f8b3d0ea053001af6f05eb946244147d2e5e3670
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:41:00 2011 +0000
+
+    Add COPYING.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ COPYING |   24 ++++++++++++++++++++++++
+ 1 files changed, 24 insertions(+), 0 deletions(-)
+
+commit a7590c7a0c6691d0110c4bbc520bd11c166fa86d
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:40:51 2011 +0000
+
+    Add .gitignore.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .gitignore |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
