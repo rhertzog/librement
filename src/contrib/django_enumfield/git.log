@@ -1,0 +1,313 @@
+commit dac0ad46ad5cdda1e4d70ccf831cc44ac8653105
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Aug 24 14:41:14 2012 -0700
+
+    Default can be None.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 8d2353e6913ed9b10134b8f5f0928be9f1c79119
+Author: Ben Phillips <ben@playfire.com>
+Date:   Thu Jan 19 15:48:55 2012 +0000
+
+    Serialize using database stored value, not slug.
+
+ django_enumfield/fields.py |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+commit 3b6112587bfd6779df8862a97d263e8acb05a7ae
+Author: Chris Lamb <chris@playfire.com>
+Date:   Sun Sep 11 05:39:32 2011 +0100
+
+    Could have sworn South accepting a slug previously.
+
+ django_enumfield/fields.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 63db82a45af015801856c519748ff8e9facf40df
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Sep 9 15:04:16 2011 +0100
+
+    Generate correct "default" values.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    8 +++++++-
+ 1 files changed, 7 insertions(+), 1 deletions(-)
+
+commit 42f21661446876596f56a99d70891b6436ef1efb
+Author: Thomas Hunger <teh@playfire.com>
+Date:   Tue Aug 30 11:10:22 2011 +0100
+
+    Sorted items have to be, well, sorted.
+
+ django_enumfield/enumeration.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 24f59e84ff24bffb381378008f4affeb60b334e6
+Author: Thomas Hunger <teh@playfire.com>
+Date:   Thu Aug 25 16:47:16 2011 +0100
+
+    Fix: mirror Enumeration API.
+
+ django_enumfield/enumeration.py |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+commit fc272d6d6e6750fd1fb308c2fd994da3ae2633c0
+Author: Thomas Hunger <teh@playfire.com>
+Date:   Thu Aug 25 15:48:53 2011 +0100
+
+    Check uniqueness constraints on values and slugs.
+
+ django_enumfield/enumeration.py |   13 +++++++++++++
+ 1 files changed, 13 insertions(+), 0 deletions(-)
+
+commit 350ebd4f4d846305fc5fc585da591038e7f4a16f
+Author: Thomas Hunger <teh@playfire.com>
+Date:   Thu Aug 25 15:24:14 2011 +0100
+
+    Add make_enum function.
+    
+    The returned Enumeration types are API compatible with Enumeration.
+    The enumerations returned return from EnumerationBase, not Enumeration,
+    so you need to change any isinstance tests you may be using.
+
+ django_enumfield/__init__.py    |    2 +-
+ django_enumfield/enumeration.py |   25 ++++++++++++++++++++++---
+ 2 files changed, 23 insertions(+), 4 deletions(-)
+
+commit 8c116adaf0f571a4843173951880bd77bef702bb
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Aug 4 11:01:11 2011 +0100
+
+    Correct path in South triple definition.
+
+ django_enumfield/fields.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 6554902ad163b46beaa0bcc256e23403b4204744
+Author: Ben Phillips <ben@playfire.com>
+Date:   Fri Jul 15 11:00:55 2011 +0100
+
+    Sort items on the order they're added.
+
+ django_enumfield/enumeration.py |    2 +-
+ django_enumfield/item.py        |   10 ++++++++++
+ 2 files changed, 11 insertions(+), 1 deletions(-)
+
+commit 53794891762b01992c134cd0f2a20362d370255c
+Author: Ben Phillips <ben@playfire.com>
+Date:   Thu Jul 14 16:36:42 2011 +0100
+
+    Change the default ordering of items to be sorted by display instead of value.
+
+ django_enumfield/enumeration.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit f601995dd47babb197e980b1f1c88d2507073d6b
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jun 27 15:29:14 2011 +0100
+
+    Inherit items from parent classes.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/enumeration.py |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+commit 603c7a2748728d9f875f6f347a8cc692d8849979
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Jun 16 12:17:01 2011 +0100
+
+    Make Enumeration.from_{value,slug} raise an exception when value is bogus
+    
+    Previously we had to check for 'None' which is a bit too C-like - the most
+    common case was that we expected the value to exist anyway and we can
+    always catch the ensuing exception in the case that we want to do something
+    else.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/enumeration.py |   14 ++++++++++++--
+ 1 files changed, 12 insertions(+), 2 deletions(-)
+
+commit 39c70117c16c7d51051c5b12b53e3f6af5d8cba8
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Apr 8 11:09:07 2011 +0100
+
+    Support __gte (etc.) queries on enum fields.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 4fda9a5e7a1a78e2efc830582ee735e62bf2a891
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Mar 22 12:00:13 2011 +0000
+
+    Add setup.py file
+
+ setup.py |   17 +++++++++++++++++
+ 1 files changed, 17 insertions(+), 0 deletions(-)
+
+commit c8069fff1941d0739bca8716a5e26f5c02ccffe3
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Mar 16 22:16:18 2011 +0000
+
+    Add South field tuple.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+commit 1f30a61bcc5feb8d7054efee7af8ed846d4dbd11
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Mar 3 10:10:07 2011 +0000
+
+    Fix nullable EnumFields.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+commit bd540e3a0bcc13c6c50c1d72f1982084ab5cb87e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Wed Mar 2 00:32:27 2011 +0000
+
+    Allow string arguments (as slugs) when saving/updating EnumFields
+    
+    This fixes issues where:
+    
+      MyModel.objects.update(my_enum_field='slug')
+    
+    would result in SQL like:
+    
+      UPDATE app_mymodel SET my_enum_field = 'slug'
+    
+    .. instead of what that's slug's integer value is.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/fields.py |    4 +---
+ 1 files changed, 1 insertions(+), 3 deletions(-)
+
+commit c751692e00c942780ffd2e098f4208558c56e3df
+Author: Chris Lamb <lamby@debian.org>
+Date:   Mon Feb 7 14:48:45 2011 +0000
+
+    Remove README.rst
+
+ README.rst |    4 ----
+ 1 files changed, 0 insertions(+), 4 deletions(-)
+
+commit 520e4b8a7d7a40963061b4433bda3b08148776f6
+Author: Chris Lamb <lamby@debian.org>
+Date:   Thu Feb 3 15:25:54 2011 +0000
+
+    Ignore automatically generated docs
+
+ .gitignore |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+commit c2c02ad7be3bc83735501ae10ccc2c227ccfdd91
+Author: Chris Lamb <lamby@debian.org>
+Date:   Thu Feb 3 14:01:39 2011 +0000
+
+    Update copyright years
+
+ COPYING |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit c3a6c6e3382ddb058d1f66e8595b62337c4ee1c6
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 21:41:59 2011 +0000
+
+    Correct syntax error.
+
+ django_enumfield/enumeration.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit dcad60171d4499b17e356ba265bd22ecfd917e94
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 20:59:50 2011 +0000
+
+    Misc tidying of enumfield.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/enumeration.py |   16 ++++++++++------
+ django_enumfield/fields.py      |    5 +++--
+ django_enumfield/item.py        |   10 +++++-----
+ 3 files changed, 18 insertions(+), 13 deletions(-)
+
+commit f2ce28022811a9cd439f0ce060f2a808250be3c0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 20:55:41 2011 +0000
+
+    Split into three modules
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/__init__.py    |  180 +--------------------------------------
+ django_enumfield/enumeration.py |   92 ++++++++++++++++++++
+ django_enumfield/fields.py      |   34 ++++++++
+ django_enumfield/item.py        |   50 +++++++++++
+ 4 files changed, 179 insertions(+), 177 deletions(-)
+
+commit af6130e977d7106f5c25f0dee15506e88d959ba6
+Author: Chris Lamb <lamby@debian.org>
+Date:   Mon Jan 17 18:10:02 2011 +0000
+
+    Add template README.rst
+
+ README.rst |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+commit 1667756527bd574cef89093e2308bce2a70f7ec4
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 15:28:24 2011 +0000
+
+    Split our enum.py out into django_enumfield.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_enumfield/__init__.py |  177 ++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 177 insertions(+), 0 deletions(-)
+
+commit 15ac0b635a34adbd51474472eb0afb1a5ddfa7bb
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 15:27:17 2011 +0000
+
+    Add django_enumfield package.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 40de7f795cef4f2e4ddc1b106860edd2356ecbd0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 15:25:43 2011 +0000
+
+    Add COPYING.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ COPYING |   24 ++++++++++++++++++++++++
+ 1 files changed, 24 insertions(+), 0 deletions(-)
+
+commit ead45d52ec033eee620d1029074359d022c5049c
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 17 15:25:38 2011 +0000
+
+    Add .gitignore.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .gitignore |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
