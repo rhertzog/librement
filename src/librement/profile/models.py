@@ -9,4 +9,12 @@ from .enums import AccountEnum, CountryEnum
 class Profile(PerUserData('profile')):
     account_type = EnumField(AccountEnum)
 
+    organisation = models.CharField(max_length=100, blank=True)
+
+    address_1 = models.CharField(max_length=150, blank=True)
+    address_2 = models.CharField(max_length=150, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    region = models.CharField(max_length=100, blank=True)
+    zipcode = models.CharField(max_length=100, blank=True)
+
     country = EnumField(CountryEnum)
