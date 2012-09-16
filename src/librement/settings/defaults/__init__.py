@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
 
     'debug_toolbar',
+    'debug_toolbar_user_panel',
     'south',
 
     'librement.static',
@@ -111,6 +112,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar_user_panel.panels.UserPanel',
     'debug_toolbar.panels.timer.TimerDebugPanel',
     'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
     'debug_toolbar.panels.headers.HeaderDebugPanel',
