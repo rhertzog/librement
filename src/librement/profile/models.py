@@ -18,3 +18,11 @@ class Profile(PerUserData('profile')):
     zipcode = models.CharField(max_length=100, blank=True)
 
     country = EnumField(CountryEnum)
+
+class Email(models.Model):
+    user = models.ForeignKey('auth.User', related_name='emails')
+
+    email = models.EmailField(unique=True)
+
+    def __unicode__(self):
+        return u"%s" % self.email
