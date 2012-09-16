@@ -24,6 +24,11 @@ Git () {
 }
 
 case "${PROJECT}" in
+	jquery)
+		mkdir -p ${PROJECT}
+		wget -Ojquery/jquery.js http://code.jquery.com/jquery.js
+		;;
+
 	--all)
 		for DIR in $(find -mindepth 1 -maxdepth 1 -type d -not -name '_*' -printf '%f\n')
 		do
