@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+export PYTHONDONTWRITEBYTECODE = 1
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	rm -f src/contrib/*/*.log
+
+override_dh_auto_test:
+	src/librement/manage.py test --verbosity=2
+
+override_dh_auto_build:
+	debian/generate_hashes src/media > src/librement/settings/hashes.py
+	echo "from roles.live import *" > src/librement/settings/role.py

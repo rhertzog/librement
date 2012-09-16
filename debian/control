@@ -1,0 +1,14 @@
+Source: librement
+Section: net
+Priority: optional
+Maintainer: Chris Lamb <chris@lambynet.co.uk>
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.2
+
+Package: librement
+Architecture: all
+Depends:
+  ${misc:Depends},
+  ${python:Depends},
+  python-django,
+  python-django-south,
