@@ -1,0 +1,44 @@
+
+  We can't assume that "process_view" is called on our panels because a
+  middleware may render and then return a response.
+
+diff --git a/debug_toolbar/panels/request_vars.py b/debug_toolbar/panels/request_vars.py
+index 956e028..97eb80d 100644
+--- a/debug_toolbar/panels/request_vars.py
++++ b/debug_toolbar/panels/request_vars.py
+@@ -32,10 +32,13 @@ class RequestVarsDebugPanel(DebugPanel):
+             'get': [(k, self.request.GET.getlist(k)) for k in self.request.GET],
+             'post': [(k, self.request.POST.getlist(k)) for k in self.request.POST],
+             'cookies': [(k, self.request.COOKIES.get(k)) for k in self.request.COOKIES],
+-            'view_func': '%s.%s' % (self.view_func.__module__, self.view_func.__name__),
+-            'view_args': self.view_args,
+-            'view_kwargs': self.view_kwargs
+         })
++        if hasattr(self, 'view_func'):
++            context.update({
++                'view_func': '%s.%s' % (self.view_func.__module__, self.view_func.__name__),
++                'view_args': self.view_args,
++                'view_kwargs': self.view_kwargs
++            })
+         if hasattr(self.request, 'session'):
+             context.update({
+                 'session': [(k, self.request.session.get(k)) for k in self.request.session.iterkeys()]
+diff --git a/debug_toolbar/templates/debug_toolbar/panels/request_vars.html b/debug_toolbar/templates/debug_toolbar/panels/request_vars.html
+index 07c223a..037ef49 100644
+--- a/debug_toolbar/templates/debug_toolbar/panels/request_vars.html
++++ b/debug_toolbar/templates/debug_toolbar/panels/request_vars.html
+@@ -1,5 +1,6 @@
+ {% load i18n %}
+ 
++{% if view_func %}
+ <h4>{% trans 'View information' %}</h4>
+ <table>
+ 	<thead>
+@@ -25,6 +26,7 @@
+ 		</tr>
+ 	</tbody>
+ </table>
++{% endif %}
+ 
+ <h4>{% trans 'COOKIES Variables' %}</h4>
+ {% if cookies %}

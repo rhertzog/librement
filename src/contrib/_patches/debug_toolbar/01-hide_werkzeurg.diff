@@ -1,0 +1,41 @@
+From 34b2a33656bebe022aa335d65dda20be6255dc35 Mon Sep 17 00:00:00 2001
+From: Chris Lamb <lamby@debian.org>
+Date: Wed, 14 Oct 2009 14:51:39 +0100
+Subject: [PATCH] Hide werkzeug-related items from SQL stacktrace
+
+eg. from django-extensions's runserver_plus
+
+Signed-off-by: Chris Lamb <lamby@debian.org>
+---
+ debug_toolbar/panels/sql.py |    8 ++++++++
+ 1 files changed, 8 insertions(+), 0 deletions(-)
+
+diff --git a/debug_toolbar/panels/sql.py b/debug_toolbar/panels/sql.py
+index a6972f6..fb973f1 100644
+--- a/debug_toolbar/panels/sql.py
++++ b/debug_toolbar/panels/sql.py
+@@ -22,6 +22,12 @@ from debug_toolbar.utils import sqlparse
+ django_path = os.path.realpath(os.path.dirname(django.__file__))
+ socketserver_path = os.path.realpath(os.path.dirname(SocketServer.__file__))
+ 
++try:
++    import werkzeug
++    werkzeug_path = os.path.realpath(os.path.dirname(werkzeug.__file__))
++except ImportError:
++    werkzeug_path = None
++
+ # TODO:This should be set in the toolbar loader as a default and panels should
+ # get a copy of the toolbar object with access to its config dictionary
+ SQL_WARNING_THRESHOLD = getattr(settings, 'DEBUG_TOOLBAR_CONFIG', {}) \
+@@ -42,6 +48,8 @@ def tidy_stacktrace(strace):
+             continue
+         if socketserver_path in s_path:
+             continue
++        if werkzeug_path and werkzeug_path in s[0]:
++            continue
+         trace.append((s[0], s[1], s[2], s[3]))
+     return trace
+ 
+-- 
+1.6.4.3
+

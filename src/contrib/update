@@ -28,6 +28,10 @@ case "${PROJECT}" in
 		Git git://github.com/twitter/bootstrap.git ${PROJECT}
 		;;
 
+	debug_toolbar)
+		Git git://github.com/robhudson/django-debug-toolbar.git ${PROJECT} ${PROJECT}
+		;;
+
 	jquery)
 		mkdir -p ${PROJECT}
 		wget -Ojquery/jquery.js http://code.jquery.com/jquery.js
