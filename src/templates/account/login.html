@@ -7,7 +7,7 @@
     <legend>Login</legend>
     {% if form.errors %}
     <div class="alert alert-error">
-        Incorrect email address or password!
+        {% for x in form.non_field_errors %}{{ x }}{% endfor %}
     </div>
     {% endif %}
     <form method="POST" action="">
