@@ -1,10 +1,20 @@
 {% extends "base/base.html" %}
 
+{% load url from future %}
+
 {% block content %}
 
 <header class="hero-unit">
   <h1>Librement.net</h1>
   <p class="lead">Spend more time writing free software without losing income.</p>
 </header>
+
+<p>
+  {% if request.user.is_authenticated %}
+    Logged in as user #{{ request.user.pk }}. <a href="{% url "account:logout" %}">Logout</a>
+  {% else %}
+    <a href="{% url "account:login" %}">Login</a>
+  {% endif %}
+</p>
 
 {% endblock %}
