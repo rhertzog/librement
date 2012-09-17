@@ -40,6 +40,11 @@ class RegistrationForm(forms.ModelForm):
         if password != password_confirm:
             raise forms.ValidationError("Passwords do not match.")
 
+        if len(password) < 8:
+            raise forms.ValidationError(
+                "Password must be at least 8 characters"
+            )
+
         return password
 
     def clean_organisation(self):
