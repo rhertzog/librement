@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import RegistrationForm
 
@@ -7,9 +7,10 @@ def view(request):
         form = RegistrationForm(request.POST)
 
         if form.is_valid():
-            user = form.save()
+            form.save()
 
-            assert False, user
+            return redirect('registration:done')
+
     else:
         form = RegistrationForm()
 
