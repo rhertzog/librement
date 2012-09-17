@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from librement.profile.enums import AccountEnum
+
 from librement.profile.models import Profile
 
 class RegistrationForm(forms.ModelForm):
@@ -30,6 +32,18 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError("Passwords do not match.")
 
         return password
+
+    def clean_organisation(self):
+        val = self.cleaned_data['organisation']
+
+        account_type = self.cleaned_data.get('account_type')
+
+        if account_type != AccountEnum.INDIVIDUAL and val == '':
+            raise forms.ValidationError(
+                "Required field for company/non-profit accounts"
+            )
+
+        return val
 
     def save(self):
         user = User.objects.create_user(
