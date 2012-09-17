@@ -16,8 +16,8 @@ class RegistrationForm(forms.ModelForm):
 
     email = forms.EmailField()
 
-    password = forms.CharField()
-    password_confirm = forms.CharField()
+    password = forms.CharField(required=False)
+    password_confirm = forms.CharField(required=False)
 
     class Meta:
         model = Profile
