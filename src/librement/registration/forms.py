@@ -78,6 +78,8 @@ class RegistrationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.save()
 
+        # Store the user's email address; we don't use User.email as we support
+        # multiple email addresses.
         user.emails.create(email=self.cleaned_data['email'])
 
         return user
