@@ -4,17 +4,20 @@
 
 <section id="registration">
 
-  <h1 class="page-title">Register</h1>
+  <div class="well row">
+    <legend>Register</legend>
 
-  <form method="POST" action="">
-    {% csrf_token %}
+    <form method="POST" action="">
+      {% csrf_token %}
 
-    {{ form }}
+      {{ form }}
 
-    <div class="well">
-      <button type="submit" class="btn btn-primary">Register</button>
-    </div>
-  </form>
+      <p>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </p>
+    </form>
+
+  </div>
 
 </section>
 
