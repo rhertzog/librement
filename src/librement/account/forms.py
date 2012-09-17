@@ -18,6 +18,9 @@ class LoginForm(forms.Form):
                 "Please enter a correct username and password."
             )
 
+        if not user.is_active:
+            raise forms.ValidationError("This account is not active.")
+
         self.cleaned_data['user'] = user
 
         return self.cleaned_data
