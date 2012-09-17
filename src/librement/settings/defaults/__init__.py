@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
 
     'debug_toolbar',
+    'email_from_template',
     'debug_toolbar_user_panel',
     'south',
 
