@@ -17,4 +17,4 @@ class Profile(PerUserData('profile')):
     region = models.CharField(max_length=100, blank=True)
     zipcode = models.CharField(max_length=100, blank=True)
 
-    country = EnumField(CountryEnum)
+    country = EnumField(CountryEnum, default=CountryEnum.US)
