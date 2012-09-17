@@ -16,3 +16,7 @@ if settings.DEBUG:
     urlpatterns += patterns('librement.debug.views',
         url(r'^(?P<code>404|500)$', 'error'),
     )
+
+    urlpatterns += patterns('',
+        url(r'', include('debug_toolbar_user_panel.urls')),
+    )
