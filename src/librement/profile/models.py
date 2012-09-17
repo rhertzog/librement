@@ -7,7 +7,7 @@ from librement.utils.user_data import PerUserData
 from .enums import AccountEnum, CountryEnum
 
 class Profile(PerUserData('profile')):
-    account_type = EnumField(AccountEnum)
+    account_type = EnumField(AccountEnum, default=AccountEnum.INDIVIDUAL)
 
     organisation = models.CharField(max_length=100, blank=True)
 
