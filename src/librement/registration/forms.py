@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from librement.profile.enums import AccountEnum
 
+from librement.account.models import Email
 from librement.profile.models import Profile
 
 class RegistrationForm(forms.ModelForm):
@@ -23,6 +24,14 @@ class RegistrationForm(forms.ModelForm):
             'zipcode',
             'country',
         )
+
+    def clean_email(self):
+        val = self.cleaned_data['email']
+
+        if Email.objects.filter(email=val).exists():
+            raise forms.ValidationError("Email address already in use.")
+
+        return val
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get('password', '')
