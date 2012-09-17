@@ -28,3 +28,30 @@ class ForgotPasswordForm(forms.Form):
             'passwords/forgot_password.email',
             {'user': email.user},
         )
+
+class ResetPasswordForm(forms.Form):
+    password = forms.CharField(required=False)
+    password_confirm = forms.CharField(required=False)
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+
+    def clean_password_confirm(self):
+        password = self.cleaned_data.get('password', '')
+        password_confirm = self.cleaned_data['password_confirm']
+
+        if password != password_confirm:
+            raise forms.ValidationError("Passwords do not match.")
+
+        if len(password) < 8:
+            raise forms.ValidationError(
+                "Password must be at least 8 characters"
+            )
+
+        return password
+
+    def save(self):
+        self.user.set_password(self.cleaned_data['password'])
+        self.user.save()

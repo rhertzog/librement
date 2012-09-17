@@ -5,4 +5,9 @@ urlpatterns = patterns('librement.passwords.views',
         name='forgot-password'),
     url(r'^forgot-password/done$', 'forgot_password_done',
         name='forgot-password-done'),
+
+    url(r'^reset-password$', 'reset_password',
+        name='reset-password'),
+    url(r'^reset-password/done$', 'reset_password_done',
+        name='reset-password-done'),
 )
