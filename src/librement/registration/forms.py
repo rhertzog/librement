@@ -82,4 +82,7 @@ class RegistrationForm(forms.ModelForm):
         # multiple email addresses.
         user.emails.create(email=self.cleaned_data['email'])
 
+        # Update Profile model
+        super(RegistrationForm, self).save()
+
         return user
