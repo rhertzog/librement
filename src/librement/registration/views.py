@@ -24,4 +24,8 @@ def done(request):
 
 @login_required
 def confirm(request):
+    # Mark the user as active
+    request.user.is_active = True
+    request.user.save()
+
     return render(request, 'registration/confirm.html')
