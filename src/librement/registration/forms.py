@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from librement.profile.models import Profile
 
 class RegistrationForm(forms.ModelForm):
+    email = forms.EmailField()
+
     password = forms.CharField()
     password_confirm = forms.CharField()
 
