@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="span4 offset4 well">
+    <legend>Login</legend>
+    {% if form.errors %}
+    <div class="alert alert-error">
+        Incorrect email address or password!
+    </div>
+    {% endif %}
+    <form method="POST" action="">
+      {% csrf_token %}
+      <input type="text" class="span4" name="{{ form.email.html_name }}" value="{{ form.email.value|default:"" }}" placeholder="Email">
+      <input type="password" class="span4" name="{{ form.password.html_name }}" value="{{ form.password.value|default:"" }}" placeholder="Password">
+      <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
