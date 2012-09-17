@@ -172,6 +172,10 @@ CACHES = {
     }
 }
 
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+)
+
 # http://south.aeracode.org/docs/settings.html#south-tests-migrate
 SOUTH_TESTS_MIGRATE = False
 
