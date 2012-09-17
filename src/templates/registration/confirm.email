@@ -1,0 +1,16 @@
+{% extends email_from_template %}
+
+{% load url from future %}
+
+{% block subject %}
+Confirm your email address
+{% endblock %}
+
+{% block body %}
+Hi {{ user.first_name }},
+
+Click here to confirm your email address:
+
+ {{ settings.SITE_URL }}{% url "registration:confirm" %}?{% automatic_login_token user %}
+
+{% endblock %}

@@ -1,3 +1,5 @@
+from email_from_template import send_mail
+
 from django import forms
 from django.contrib.auth.models import User
 
@@ -80,11 +82,16 @@ class RegistrationForm(forms.ModelForm):
 
         # Store the user's email address; we don't use User.email as we support
         # multiple email addresses.
-        user.emails.create(email=self.cleaned_data['email'])
+        email = user.emails.create(email=self.cleaned_data['email'])
 
         # Update Profile model rather than create a new one.
         profile = super(RegistrationForm, self).save(commit=False)
         profile.user = user
         profile.save()
+
+        # Send confirmation email
+        send_mail((email.email,), 'registration/confirm.email', {
+            'user': user,
+        })
 
         return user
