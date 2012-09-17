@@ -11,7 +11,10 @@ class ForgotPasswordForm(forms.Form):
         val = self.cleaned_data['email']
 
         try:
-            return Email.objects.get(email=val)
+            return Email.objects.get(
+                email=val,
+                user__is_active=True,
+            )
         except Email.DoesNotExist:
             raise forms.ValidationError(
                 "That email address does not exist."
