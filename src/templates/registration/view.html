@@ -4,20 +4,126 @@
 
 <section id="registration">
 
-  <div class="well row">
-    <legend>Register</legend>
+  <form method="POST" action="" class="form-horizontal">
+    {% csrf_token %}
 
-    <form method="POST" action="">
-      {% csrf_token %}
+    {{ form.errors }}
 
-      {{ form }}
+    <div class="well row">
+      <legend>Register</legend>
 
-      <p>
-        <button type="submit" class="btn btn-primary">Register</button>
-      </p>
-    </form>
+      <div class="control-group {% if form.errors.email %}error{% endif %}">
+        <label class="control-label" for="{{ form.email.id_for_label }}">Email</label>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">@</span>
+            <input type="text" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" placeholder="Email" value="{{ form.email.value|default:"" }}">
+          </div>
+          <span class="help-inline">
+            {% for x in form.errors.email %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
 
-  </div>
+      <div class="control-group {% if form.errors.password or form.errors.password_confirm %}error{% endif %}">
+        <label class="control-label" for="{{ form.password.id_for_label }}">Password</label>
+        <div class="controls">
+          <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="{{ form.password.value|default:"" }}" placeholder="Password">
+          <span class="help-inline">
+            {% for x in form.errors.password %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="password" id="{{ form.password_confirm.id_for_label }}" name="{{ form.password_confirm.html_name }}" value="{{ form.password_confirm.value|default:"" }}" placeholder="Confirm password">
+          <span class="help-inline">
+            {% for x in form.errors.password_confirm %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
+      <div class="control-group {% if form.errors.country %}error{% endif %}">
+        <label class="control-label" for="{{ form.country.id_for_label }}">Country</label>
+        <div class="controls">
+          <select name="{{ form.country.html_name }}" id="{{ form.country.id_for_label }}" class="span4">
+            {% for enum,display in form.fields.country.choices %}
+              <option value="{{ enum.slug }}" {% if form.country.value == enum %}selected="selected"{% endif %}>{{ display }}</option>
+            {% endfor %}
+          </select>
+          <span class="help-inline">
+            {% for x in form.errors.country %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
+      <div class="control-group {% if form.errors.account_type %}error{% endif %}">
+        <label class="control-label" for="{{ form.account_type.id_for_label }}">Account type</label>
+        <div class="controls">
+          {% for enum,display in form.fields.account_type.choices %}
+          <label class="radio">
+            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %}>
+            {{ display }}
+          </label>
+          {% endfor %}
+          <span class="help-inline">
+            {% for x in form.errors.account_type %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
+      <div class="control-group {% if form.errors.organisation %}error{% endif %}">
+        <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation (optional)</label>
+        <div class="controls">
+          <input type="text" id="{{ form.organisation.id_for_label }}" name="{{ form.organisation.html_name }}" placeholder="Organisation" value="{{ form.organisation.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.organisation %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Address (optional)</label>
+        <div class="controls">
+          <input type="text" id="{{ form.address_1.id_for_label }}" name="{{ form.address_1.html_name }}" placeholder="Address" value="{{ form.address_1.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.address_1 %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="text" id="{{ form.address_2.id_for_label }}" name="{{ form.address_2.html_name }}" placeholder="Address" value="{{ form.address_2.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.address_2 %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="text" id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" placeholder="City" value="{{ form.city.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.city %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="text" id="{{ form.region.id_for_label }}" name="{{ form.region.html_name }}" placeholder="State/region" value="{{ form.region.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.region %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="text" id="{{ form.zipcode.id_for_label }}" name="{{ form.zipcode.html_name }}" placeholder="Zipcode" value="{{ form.zipcode.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.zipcode %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
+
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
 
 </section>
 
