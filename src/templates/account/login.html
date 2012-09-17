@@ -1,5 +1,7 @@
 {% extends "base/base.html" %}
 
+{% load url from future %}
+
 {% block content %}
 
 <div class="row">
@@ -16,8 +18,9 @@
       <input type="password" class="span4" name="{{ form.password.html_name }}" value="{{ form.password.value|default:"" }}" placeholder="Password">
       <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
     </form>
+
+    <p><a href="{% url "passwords:forgot-password" %}">Forgot password</a></p>
   </div>
 </div>
-
 
 {% endblock %}
