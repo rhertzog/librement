@@ -14,6 +14,5 @@ class LibrementBackend(ModelBackend):
             ):
                 if email.user.check_password(candidate):
                     return email.user
-
         except Email.DoesNotExist:
-            return None
+            pass
