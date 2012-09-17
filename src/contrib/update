@@ -40,6 +40,10 @@ case "${PROJECT}" in
 		Git git://github.com/playfire/django-enumfield.git ${PROJECT} ${PROJECT}
 		;;
 
+	email_from_template)
+		Git git://github.com/playfire/django-email-from-template.git ${PROJECT} ${PROJECT}
+		;;
+
 	jquery)
 		mkdir -p ${PROJECT}
 		wget -Ojquery/jquery.js http://code.jquery.com/jquery.js

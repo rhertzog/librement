@@ -1,0 +1,206 @@
+commit b536898276e1f1146feff6af8dd237b3a4af0406
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Sep 17 21:43:59 2012 +0100
+
+    Add ability to much about with the EmailAddress before sending.
+
+ email_from_template/send_mail.py |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+commit 4613640bc612df2bc67b62d5aefe3880985763ed
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Sep 8 17:07:11 2011 +0100
+
+    Only pass the first line of the Subject
+    
+    Django will blow up to protect an injection attack, so lets just prevent
+    that from happening.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ email_from_template/send_mail.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 9b990f94a0b33f08a251a7400e236b55552d5b43
+Author: Chris Lamb <chris@playfire.com>
+Date:   Sun Aug 28 23:41:20 2011 +0100
+
+    In Canada, these go outside the bag.
+
+ email_from_template/send_mail.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit fb7df285dd9d3ca18f8cebb71530e2a42c0d621d
+Author: Chris Lamb <chris@playfire.com>
+Date:   Sun Aug 28 23:39:19 2011 +0100
+
+    Don't wrap, fixing documentation.
+
+ email_from_template/send_mail.py |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 7d75a536333ff3e1d1d7c2715f2fd1c80901856e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jul 18 01:29:43 2011 +0100
+
+    Add mail_admins wrapper.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ email_from_template/__init__.py  |    2 +-
+ email_from_template/send_mail.py |   13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletions(-)
+
+commit 6b95b8534ee2743ce84d02dc5766839ed3eeec77
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:27:01 2011 +0100
+
+    Install templates when using setuptools.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ setup.py |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+commit 061ef138a79e9539c12823515675e1ed0e7ee3d0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:05:17 2011 +0100
+
+    Add README.rst.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ README.rst |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+commit 3f2dad31f2263aa63c70b6c46434bb6b9de3c93c
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:00:08 2011 +0100
+
+    Add initial docs.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ email_from_template/send_mail.py |  187 ++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 187 insertions(+), 0 deletions(-)
+
+commit 350975f1d2f6357002c12a2023f05c0699d8d6d9
+Author: Chris Lamb <chris@playfire.com>
+Date:   Fri Jul 8 15:00:01 2011 +0100
+
+    Add docs framework to django-email-from-template.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ docs/Makefile     |   80 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ docs/conf.py      |   16 ++++++++++
+ docs/index.rst    |    1 +
+ docs/playfire.png |  Bin 0 -> 6037 bytes
+ 4 files changed, 97 insertions(+), 0 deletions(-)
+
+commit 722c1e95fca7175817b0a2b4ce49eb6ffa76987f
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Mar 22 12:00:13 2011 +0000
+
+    Add setup.py file
+
+ setup.py |   16 ++++++++++++++++
+ 1 files changed, 16 insertions(+), 0 deletions(-)
+
+commit 552ff3a8f667ff2ccd61a4e2e0952cfb043b564d
+Author: Ben Phillips <ben@playfire.com>
+Date:   Mon Mar 14 17:18:38 2011 +0000
+
+    email_from_template can take an html block.
+
+ email_from_template/send_mail.py                   |   24 +++++++++++++++----
+ .../templates/email_from_template/html.email       |    1 +
+ 2 files changed, 20 insertions(+), 5 deletions(-)
+
+commit 3111520d96550a8ec313288508225afeba948e39
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 7 14:48:45 2011 +0000
+
+    Remove README.rst
+
+ README.rst |    4 ----
+ 1 files changed, 0 insertions(+), 4 deletions(-)
+
+commit 5bd18c9bffb07b1a831777e5753cf18f0b111b86
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Feb 3 15:25:54 2011 +0000
+
+    Ignore automatically generated docs
+
+ .gitignore |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+commit 8e013cfe7895e919ed139c761321ecf9d79ab06b
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Feb 3 14:01:37 2011 +0000
+
+    Update copyright years
+
+ COPYING |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 8d651ed493d2787da478f0c7c120917d3335b4d5
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 24 10:59:49 2011 +0000
+
+    Use Django's memoize over a custom one.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ email_from_template/utils.py |   22 ++++++----------------
+ 1 files changed, 6 insertions(+), 16 deletions(-)
+
+commit b374e45aeada04b4d991f3e196034eda42423e9d
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 24 10:41:33 2011 +0000
+
+    Add empty README.rst
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ README.rst |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+commit ccb9115857f37a02f91c4cd4f0750c7af849155e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 24 10:11:19 2011 +0000
+
+    Initial import of email_from_template.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ email_from_template/__init__.py                    |    1 +
+ email_from_template/app_settings.py                |   10 ++++
+ email_from_template/context_processors.py          |   20 +++++++
+ email_from_template/send_mail.py                   |   57 ++++++++++++++++++++
+ .../templates/email_from_template/body.email       |    1 +
+ .../templates/email_from_template/subject.email    |    1 +
+ email_from_template/utils.py                       |   36 ++++++++++++
+ 7 files changed, 126 insertions(+), 0 deletions(-)
+
+commit 42065e50ab9587697f7527708aa7fef5de7ba383
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 24 10:08:02 2011 +0000
+
+    Add COPYING.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ COPYING |   24 ++++++++++++++++++++++++
+ 1 files changed, 24 insertions(+), 0 deletions(-)
+
+commit 8a800877b16c44be3cc5e1bfb7b05eca4cc52d2d
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Jan 24 10:07:58 2011 +0000
+
+    Add .gitignore.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ .gitignore |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
