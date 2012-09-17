@@ -63,11 +63,14 @@ class RegistrationForm(forms.ModelForm):
         return val
 
     def save(self):
-        user = User.objects.create_user(
+        user = User(
             username='FIXME',
-            password=self.cleaned_data['password'],
+            first_name=self.cleaned_data['first_name'],
+            last_name=self.cleaned_data['last_name'],
         )
 
-        print cof
+        user.set_password(self.cleaned_data['password'])
+
+        user.save()
 
         return user
