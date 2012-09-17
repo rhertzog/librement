@@ -7,6 +7,9 @@ from librement.account.models import Email
 from librement.profile.models import Profile
 
 class RegistrationForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+
     email = forms.EmailField()
 
     password = forms.CharField()
@@ -64,5 +67,7 @@ class RegistrationForm(forms.ModelForm):
             username='FIXME',
             password=self.cleaned_data['password'],
         )
+
+        print cof
 
         return user

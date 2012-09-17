@@ -10,6 +10,22 @@
     <div class="well row">
       <legend>Register</legend>
 
+      <div class="control-group {% if form.errors.first_name or form.errors.last_name %}error{% endif %}">
+        <label class="control-label" for="{{ form.first_name.id_for_label }}">Name</label>
+        <div class="controls">
+          <input type="text" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" placeholder="First name" value="{{ form.first_name.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.first_name %}{{ x }}{% endfor %}
+          </span>
+          <br>
+          <br>
+          <input type="text" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.html_name }}" placeholder="Last name" value="{{ form.last_name.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.last_name %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
       <div class="control-group {% if form.errors.email %}error{% endif %}">
         <label class="control-label" for="{{ form.email.id_for_label }}">Email</label>
         <div class="controls">
