@@ -16,3 +16,6 @@ def view(request):
     return render(request, 'registration/view.html', {
         'form': form,
     })
+
+def done(request):
+    return render(request, 'registration/done.html')
