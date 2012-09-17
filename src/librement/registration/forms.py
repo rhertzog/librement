@@ -6,6 +6,8 @@ from librement.profile.enums import AccountEnum
 from librement.account.models import Email
 from librement.profile.models import Profile
 
+from .utils import invent_username
+
 class RegistrationForm(forms.ModelForm):
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
@@ -63,10 +65,15 @@ class RegistrationForm(forms.ModelForm):
         return val
 
     def save(self):
+        username=invent_username(
+            self.cleaned_data['first_name'],
+            self.cleaned_data['last_name'],
+        )
+
         user = User(
-            username='FIXME',
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name'],
+            username=username,
         )
         user.set_password(self.cleaned_data['password'])
         user.save()
