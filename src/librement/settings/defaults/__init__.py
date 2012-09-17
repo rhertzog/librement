@@ -107,6 +107,10 @@ INSTALLED_APPS = (
     'librement.utils',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'librement.account.backends.LibrementBackend',
+)
+
 DEBUG_TOOLBAR_CONFIG = {
     'HIDE_DJANGO_SQL': True,
     'INTERCEPT_REDIRECTS': False,
