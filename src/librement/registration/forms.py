@@ -71,4 +71,6 @@ class RegistrationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.save()
 
+        user.emails.create(email=self.cleaned_data['email'])
+
         return user
