@@ -1,0 +1,250 @@
+commit 15cedb99d2f2590260e5932ec79dd887a542e9da
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Apr 10 15:20:08 2012 +0100
+
+    Use str.join over manually putting things together.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/utils.py |    5 +----
+ 1 files changed, 1 insertions(+), 4 deletions(-)
+
+commit bcdf2c0f3e7d5b5800248f9ceac037edbbe5b13e
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Apr 10 15:19:50 2012 +0100
+
+    Lookup User objects by primary in case some nutter uses a different auth.User.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py                    |    7 ++++---
+ django_autologin/templatetags/django_autologin.py |    2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+commit fc3d1b745c2e606bfdca670ebfc28ea470e2530b
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Apr 10 15:08:45 2012 +0100
+
+    Style fixups.
+
+ django_autologin/app_settings.py                  |    2 +-
+ django_autologin/templatetags/django_autologin.py |    5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+commit ab57e4690ee61c57aafba1cb50dac9aa6cdb47e3
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Apr 10 15:07:43 2012 +0100
+
+    Style fixups.
+
+ setup.py |    8 ++++++--
+ 1 files changed, 6 insertions(+), 2 deletions(-)
+
+commit c65d11f82b6d33d4940cdfd7b4d6b81e083c6e34
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Apr 10 15:07:06 2012 +0100
+
+    Use 4 spaces for indentation.
+
+ setup.py |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+commit 37c356c7b966b2ad9b2ff8513ee80c072a594b21
+Merge: 9b8cbd8 8afa7cd
+Author: Chris Lamb <chris@chris-lamb.co.uk>
+Date:   Tue Apr 10 07:06:37 2012 -0700
+
+    Merge pull request #1 from Eksmo/master
+    
+    added setup.py
+
+commit 8afa7cdf81b53dc0634fe4f8036625359f43ef9c
+Author: Fedor Nasyrov <name.zh@gmail.com>
+Date:   Tue Apr 10 12:39:20 2012 +0400
+
+    more secure salting
+
+ django_autologin/app_settings.py                  |    1 +
+ django_autologin/middleware.py                    |    4 ++--
+ django_autologin/templatetags/django_autologin.py |    4 ++--
+ django_autologin/utils.py                         |    6 ++++++
+ 4 files changed, 11 insertions(+), 4 deletions(-)
+
+commit dae24985737dd60f4ae9c4e08f703b3ab53d13bb
+Author: Fedor Nasyrov <name.zh@gmail.com>
+Date:   Tue Apr 10 11:15:56 2012 +0400
+
+    add distutils script
+
+ setup.py |    8 ++++++++
+ 1 files changed, 8 insertions(+), 0 deletions(-)
+
+commit 9b8cbd84922ec32a03b08ab29f3f9eace2805542
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Mar 29 11:28:01 2012 +0100
+
+    Strip off autologin stuff if already logged in correctly.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 45f47ae0f2c17dc08cfb7f7d9f1d8e4c237cdd16
+Author: Chris Lamb <chris@playfire.com>
+Date:   Thu Mar 29 11:27:31 2012 +0100
+
+    Avoid DRY violation
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 8617b01438be963369ab5d4941a78ce681bf3d33
+Author: Chris Lamb <chris@playfire.com>
+Date:   Mon Feb 13 00:31:21 2012 +0000
+
+    Allow age of login keys to be overriden.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/app_settings.py |    1 +
+ django_autologin/middleware.py   |    2 +-
+ 2 files changed, 2 insertions(+), 1 deletions(-)
+
+commit 03398b23c94d6884e0b1ca350a3aeafda9cc3bd8
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 16:12:37 2012 +0000
+
+    Separate the main action into a method so we can easily override it.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py                     |   35 +++++++++++---------
+ .../templates/auto_login_redirect.html             |   19 -----------
+ 2 files changed, 19 insertions(+), 35 deletions(-)
+
+commit 81aa35961ba9552701eecbdb4d8e91448835aba0
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 16:06:31 2012 +0000
+
+    Make login a utility so it can be re-used elsewhere.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/utils.py |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+commit 57ed68e47cd445b3689346e6c0ce0e05cb68f488
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 16:06:14 2012 +0000
+
+    Move strip_token into a utils package.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |   19 +------------------
+ django_autologin/utils.py      |   19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+), 18 deletions(-)
+
+commit 9f798a5db29d5b3fa3b36c20f5e0d86db1ed9b16
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 16:04:03 2012 +0000
+
+    Correct indentation.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+commit 5afcf4511e2fc9c97d9dac2bdb9c4abcb0b42c34
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 15:48:31 2012 +0000
+
+    Add an 'app_settings' module to prevent DRY violation with 'mtkn' definition.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/app_settings.py                  |    3 +++
+ django_autologin/middleware.py                    |   12 ++++--------
+ django_autologin/templatetags/django_autologin.py |   10 +++-------
+ 3 files changed, 10 insertions(+), 15 deletions(-)
+
+commit 273a2bfd4b364aeab940727ecfab888ddcccecbc
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 15:44:40 2012 +0000
+
+    Rename templatetag package to django_autologin.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/templatetags/account.py          |   18 ------------------
+ django_autologin/templatetags/django_autologin.py |   18 ++++++++++++++++++
+ 2 files changed, 18 insertions(+), 18 deletions(-)
+
+commit 67f3ca0e7d727c41eb18d84029591e8dc6fe75ff
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 15:42:40 2012 +0000
+
+    Change user if appropriate.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |    7 ++++---
+ 1 files changed, 4 insertions(+), 3 deletions(-)
+
+commit b0201c826f46fe1ebf8766c894973ee7a5bbe04d
+Author: Chris Lamb <chris@playfire.com>
+Date:   Tue Jan 17 15:37:46 2012 +0000
+
+    Make the int(..) call more explicit, and we'll need it a real int anyway.
+    
+    Signed-off-by: Chris Lamb <chris@playfire.com>
+
+ django_autologin/middleware.py |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 7aaf2f6d461ccb96b08d1212ec39aecb3d5a31c4
+Author: Ben Phillips <ben@playfire.com>
+Date:   Wed Jan 4 11:33:31 2012 +0000
+
+    Add COPYING.
+
+ COPYING |   24 ++++++++++++++++++++++++
+ 1 files changed, 24 insertions(+), 0 deletions(-)
+
+commit a51de489632924d38441d9f35e742f817a69cf92
+Author: Ben Phillips <ben@playfire.com>
+Date:   Wed Jan 4 11:33:26 2012 +0000
+
+    Move into module.
+
+ django_autologin/middleware.py                     |   68 ++++++++++++++++++++
+ .../templates/auto_login_redirect.html             |   19 ++++++
+ django_autologin/templatetags/account.py           |   18 +++++
+ middleware.py                                      |   68 --------------------
+ templates/auto_login_redirect.html                 |   19 ------
+ templatetags/account.py                            |   18 -----
+ 6 files changed, 105 insertions(+), 105 deletions(-)
+
+commit 7eacf5a9a3e65f2c339524551244bbb817e15ce9
+Author: Ben Phillips <ben@playfire.com>
+Date:   Wed Jan 4 11:15:54 2012 +0000
+
+    Initial commit of code from Playfire.
+
+ middleware.py                      |   68 ++++++++++++++++++++++++++++++++++++
+ templates/auto_login_redirect.html |   19 ++++++++++
+ templatetags/account.py            |   18 +++++++++
+ 3 files changed, 105 insertions(+), 0 deletions(-)
+
+commit d6393b987a6c1824ff65b2ca9df57d81e510a6d2
+Author: Ben Phillips <ben@playfire.com>
+Date:   Wed Jan 4 11:15:37 2012 +0000
+
+    Add .gitignore.
+
+ .gitignore |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
