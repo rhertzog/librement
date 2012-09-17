@@ -7,8 +7,13 @@ class LibrementBackend(ModelBackend):
         try:
             email = Email.objects.get(email__iexact=email)
 
-            if email.user.check_password(password):
-                return email.user
+            for candidate in (
+                password,
+                password.swapcase(),
+                password[0:1].lower() + password[1:],
+            ):
+                if email.user.check_password(candidate):
+                    return email.user
 
         except Email.DoesNotExist:
             return None
