@@ -73,6 +73,7 @@ class RegistrationForm(forms.ModelForm):
         )
 
         user = User(
+            is_active=False,
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name'],
             username=username,
