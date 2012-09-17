@@ -5,4 +5,6 @@ urlpatterns = patterns('librement.registration.views',
         name='view'),
     url(r'^register/done$', 'done',
         name='done'),
+    url(r'^register/confirm$', 'confirm',
+        name='confirm'),
 )

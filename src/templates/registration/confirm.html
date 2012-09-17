@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% load url from future %}
+
+{% block content %}
+
+<section id="registration_confirm">
+
+  <h1 class="page-title">Registration confirmed</h1>
+
+  <p>
+    Your account has been confirmed.
+  </p>
+
+  <p>
+    <a href="{% url "static:landing" %}">Click here to return to the homepage</a>
+  </p>
+
+</section>
+
+{% endblock %}
