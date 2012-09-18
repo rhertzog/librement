@@ -1,0 +1,27 @@
+{% extends "profile/edit/base.html" %}
+
+{% load url from future %}
+
+{% block profile_edit_picture %}active{% endblock %}
+
+{% block edit_profile %}
+
+<form method="POST" action="" class="form-horizontal" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="control-group {% if form.errors.picture %}error{% endif %}">
+    <label class="control-label" for="{{ form.picture.id_for_label }}">Picture</label>
+    <div class="controls">
+      <input type="file" id="{{ form.picture.id_for_label }}" name="{{ form.picture.html_name }}">
+      <span class="help-inline">
+        {% for x in form.errors.picture %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="well">
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </div>
+</form>
+
+{% endblock %}
