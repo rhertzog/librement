@@ -4,4 +4,10 @@
 
 <h1 class="page-header">{{ user.profile.display_name }}'s profile</h1>
 
+{% if user.profile.biography %}
+<blockquote>
+  {{ user.profile.biography|linebreaksbr }}
+</blockquote>
+{% endif %}
+
 {% endblock %}

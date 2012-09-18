@@ -7,4 +7,5 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = (
             'display_name',
+            'biography',
         )
