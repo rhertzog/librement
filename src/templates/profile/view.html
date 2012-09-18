@@ -1,13 +1,63 @@
 {% extends "base/base.html" %}
 
+{% load url from future %}
+
 {% block content %}
 
-<h1 class="page-header">{{ user.profile.display_name }}'s profile</h1>
+<div class="row">
 
-{% if user.profile.biography %}
-<blockquote>
-  {{ user.profile.biography|linebreaksbr }}
-</blockquote>
-{% endif %}
+  <div class="span8">
+
+    <h1 style="font-size: 50px">
+      {{ user.profile.display_name }}
+      <small>
+      {% switch user.profile.account_type %}
+        {% case "individual" %}
+          Individual
+        {% endcase %}
+        {% case "non_profit" %}
+          Non-profit
+        {% endcase %}
+        {% case "company" %}
+          Company
+        {% endcase %}
+      {% endswitch %}
+      </small>
+    </h1>
+
+    <br>
+
+    <div class="row">
+      <div class="span2">
+        (FIXME photo here)
+      </div>
+      <div class="span6">
+        {% if user.profile.biography %}
+          {{ user.profile.biography }}
+        {% endif %}
+
+        {% if request.user == user %}
+          <a href="{% url "profile:edit" %}">[edit biography]</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %}
+  <div class="span4">
+    <br>
+    <br>
+
+    <h3>Links</h3>
+
+    <ul class="unstyled">
+      <li><a href="#" rel="nofollow">Link title</a></li>
+      <li><a href="#" rel="nofollow">Link title</a></li>
+      <li><a href="#" rel="nofollow">Link title</a></li>
+      <li><a href="#" rel="nofollow">Link title</a></li>
+    </ul>
+  </div>
+  {% endcomment %}
+</div>
 
 {% endblock %}
