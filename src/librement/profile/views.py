@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -19,7 +20,9 @@ def edit(request):
         if form.is_valid():
             form.save()
 
-            return redirect('profile:view', request.user.username)
+            messages.success(request, "Profile updated successfully")
+
+            return redirect('profile:edit')
 
     else:
         form = ProfileForm(instance=request.user.profile)
@@ -36,7 +39,9 @@ def edit_url(request):
         if form.is_valid():
             form.save()
 
-            return redirect('profile:view', request.user.username)
+            messages.success(request, "URL updated successfully")
+
+            return redirect('profile:edit-url')
 
     else:
         form = URLForm(instance=request.user)
@@ -53,7 +58,9 @@ def edit_picture(request):
         if form.is_valid():
             form.save()
 
-            return redirect('profile:view', request.user.username)
+            messages.success(request, "Profile picture updated")
+
+            return redirect('profile:edit-picture')
 
     else:
         form = PictureForm(request.user)

@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1 class="page-header">Edit profile</h1>
+<h1 class="page-header">Edit profile <small><a href="{% url "profile:view" request.user.username %}">View profile</a></small></h1>
 
 <ul class="nav nav-pills">
   <li class="{% block profile_edit_basic %}{% endblock %}"><a href="{% url "profile:edit" %}">Basic information</a></li>
