@@ -12,6 +12,8 @@ class ProfileForm(forms.ModelForm):
         )
 
 class URLForm(forms.ModelForm):
+    username = forms.RegexField(regex=r'^[\w-]+$')
+
     class Meta:
         model = User
         fields = (
