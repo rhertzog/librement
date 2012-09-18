@@ -24,6 +24,6 @@ def edit(request):
     else:
         form = ProfileForm(instance=request.user.profile)
 
-    return render(request, 'profile/edit.html', {
+    return render(request, 'profile/edit/view.html', {
         'form': form,
     })
