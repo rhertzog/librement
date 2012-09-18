@@ -13,3 +13,4 @@ Depends:
   python-bcrypt,
   python-django,
   python-django-south,
+  python-psycopg2,
