@@ -25,8 +25,8 @@ class Profile(PerUserData('profile')):
 
     picture = YADTImageField(variants={
         'thumbnail': {
-            'width': 200,
-            'height': 200,
+            'width': 150,
+            'height': 150,
             'format': 'jpeg',
             'crop': True,
         },
