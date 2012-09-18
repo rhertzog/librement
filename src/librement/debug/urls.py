@@ -11,7 +11,7 @@ if settings.DEBUG:
             {'document_root': settings.STATIC_MEDIA_ROOT}),
         url(r'^storage/(?P<path>.*)$', 'serve',
             {'document_root': settings.MEDIA_ROOT}),
-        (r'^(?P<path>favicon\.ico|robots\.txt)$', 'serve',
+        url(r'^(?P<path>favicon\.ico|robots\.txt)$', 'serve',
             {'document_root': settings.STATIC_MEDIA_ROOT}),
     )
 
