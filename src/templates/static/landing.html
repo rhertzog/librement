@@ -9,12 +9,8 @@
   <p class="lead">Spend more time writing free software without losing income.</p>
 </header>
 
-<p>
-  {% if request.user.is_authenticated %}
-    Logged in as user #{{ request.user.pk }}. <a href="{% url "account:logout" %}">Logout</a>
-  {% else %}
-    <a href="{% url "account:login" %}">Login</a> or <a href="{% url "registration:view" %}">register</a>
-  {% endif %}
+<p style="text-align: center">
+  <a class="btn" href="{% url "account:login" %}">Login</a> <a class="btn" href="{% url "registration:view" %}">Register</a>
 </p>
 
 {% endblock %}
