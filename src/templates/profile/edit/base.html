@@ -1,12 +1,14 @@
 {% extends "base/base.html" %}
 
+{% load url from future %}
+
 {% block content %}
 
 <h1 class="page-header">Edit profile</h1>
 
 <ul class="nav nav-pills">
   <li class="active">
-    <a href="#">Basic information</a>
+    <a href="{% url "profile:edit" %}">Basic information</a>
   </li>
 </ul>
 
