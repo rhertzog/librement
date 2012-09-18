@@ -1,13 +1,12 @@
-import feedparser
-
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from styleme.utils.ajax import ajax
+from librement.utils.ajax import ajax
 
 from .forms import ProfileForm, URLForm, PictureForm
+from .utils import get_rss_feed
 
 def view(request, username):
     user = get_object_or_404(User, username=username)
@@ -20,13 +19,8 @@ def view(request, username):
 def xhr_rss(request, username):
     user = get_object_or_404(User, username=username)
 
-    feed = None
-
-    if user.profile.rss_url:
-        feed = feedparser.parse(user.profile.rss_url)
-
-    return render(request, 'profile/view.html', {
-        'feed': feed,
+    return render(request, 'profile/rss.html', {
+        'feed': get_rss_feed(user.profile.rss_url),
     })
 
 @login_required

@@ -1,0 +1,5 @@
+<ul class="unstyled">
+  {% for entry in feed.entries|slice:":5" %}
+  <li><a href="{{ entry.link }}" rel="nofollow">{{ entry.title }}</a></li>
+  {% endfor %}
+</ul>

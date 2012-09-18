@@ -17,3 +17,15 @@ $.extend({
     }
   }
 });
+
+$.feature('f_profile', function() {
+  var container = $('.rss');
+
+  if (!container.data('url')) {
+    return;
+  }
+
+  $.get(container.data('url'), function(html) {
+    container.replaceWith(html);
+  });
+});

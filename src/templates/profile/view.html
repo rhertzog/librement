@@ -2,6 +2,8 @@
 
 {% load url from future %}
 
+{% block body_class %}f_profile{% endblock %}
+
 {% block content %}
 
 <div class="row">
@@ -48,10 +50,20 @@
   </div>
 
   <div class="span4">
-    <br>
-    <br>
+    {% if user.profile.rss_url %}
+      <br>
+      <br>
+
+      <h3>News</h3>
+
+      <p class="rss" data-url="{% url "profile:xhr-rss" user.username %}"><em>Loading..</em></p>
+
+    {% endif %}
 
     {% if user.links.exists %}
+      <br>
+      <br>
+
       <h3>Links</h3>
 
       <ul class="unstyled">

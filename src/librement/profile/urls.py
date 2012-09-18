@@ -5,6 +5,8 @@ urlpatterns = patterns('librement.profile.views',
 
     url(r'^people/(?P<username>[^/]*)$', 'view',
         name='view'),
+    url(r'^people/(?P<username>[^/]*)/rss$', 'xhr_rss',
+        name='xhr-rss'),
     url(r'^profile/edit$', 'edit',
         name='edit'),
     url(r'^profile/edit/url$', 'edit_url',
