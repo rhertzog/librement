@@ -52,15 +52,13 @@
     <br>
 
     {% if user.links.exists %}
+      <h3>Links</h3>
 
-    <h3>Links</h3>
-
-    <ul class="unstyled">
-      {% for link in user.links.all %}
-      <li><a href="{{ link.url }}" rel="nofollow">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-
+      <ul class="unstyled">
+        {% for link in user.links.all %}
+        <li><a href="{{ link.url }}" rel="nofollow">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
     {% endif %}
   </div>
 </div>
