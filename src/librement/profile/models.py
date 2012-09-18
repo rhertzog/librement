@@ -32,7 +32,7 @@ class Profile(PerUserData('profile')):
         },
     }, cachebust=True)
 
-    rss_url = models.CharField(max_length=200)
+    rss_url = models.CharField(max_length=200, blank=True)
 
     def __unicode__(self):
         return self.display_name
