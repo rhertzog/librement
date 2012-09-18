@@ -5,4 +5,6 @@ urlpatterns = patterns('librement.profile.views',
         name='view'),
     url(r'^profile/edit$', 'edit',
         name='edit'),
+    url(r'^profile/edit/url$', 'edit_url',
+        name='edit-url'),
 )

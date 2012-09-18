@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from .forms import ProfileForm
+from .forms import ProfileForm, URLForm
 
 def view(request, username):
     user = get_object_or_404(User, username=username)
@@ -25,5 +25,22 @@ def edit(request):
         form = ProfileForm(instance=request.user.profile)
 
     return render(request, 'profile/edit/view.html', {
+        'form': form,
+    })
+
+@login_required
+def edit_url(request):
+    if request.method == 'POST':
+        form = URLForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('profile:view', request.user.username)
+
+    else:
+        form = URLForm(instance=request.user)
+
+    return render(request, 'profile/edit/url.html', {
         'form': form,
     })
