@@ -10,5 +10,6 @@ Architecture: all
 Depends:
   ${misc:Depends},
   ${python:Depends},
+  python-bcrypt,
   python-django,
   python-django-south,
