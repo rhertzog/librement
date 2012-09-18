@@ -38,3 +38,5 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
+
+XHR_SIMULATED_DELAY = 0.5
