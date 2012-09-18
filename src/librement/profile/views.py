@@ -19,7 +19,7 @@ def edit(request):
         if form.is_valid():
             form.save()
 
-            return redirect('profile:edit')
+            return redirect('profile:view', request.user.username)
 
     else:
         form = ProfileForm(instance=request.user.profile)
