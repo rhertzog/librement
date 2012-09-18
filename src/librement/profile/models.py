@@ -1,6 +1,7 @@
-from django.db import models
-
+from django_yadt import YADTImageField
 from django_enumfield import EnumField
+
+from django.db import models
 
 from librement.utils.user_data import PerUserData
 
@@ -21,3 +22,12 @@ class Profile(PerUserData('profile')):
     zipcode = models.CharField(max_length=100, blank=True)
 
     country = EnumField(CountryEnum, default=CountryEnum.US)
+
+    picture = YADTImageField(variants={
+        'thumbnail': {
+            'width': 200,
+            'height': 200,
+            'format': 'jpeg',
+            'crop': True,
+        },
+    }, cachebust=True)
