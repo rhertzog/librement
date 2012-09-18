@@ -31,3 +31,6 @@ class Profile(PerUserData('profile')):
             'crop': True,
         },
     }, cachebust=True)
+
+    def __unicode__(self):
+        return self.display_name
