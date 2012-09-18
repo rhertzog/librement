@@ -32,3 +32,4 @@ class PictureForm(forms.Form):
         self.user.profile.picture.save(
             self.cleaned_data['picture']
         )
+        self.user.profile.save()
