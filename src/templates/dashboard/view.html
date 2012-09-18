@@ -1,0 +1,9 @@
+{% extends "base/base.html" %}
+
+{% load url from future %}
+
+{% block content %}
+
+<h1 class="page-header">Welcome {{ request.user.get_full_name }}</h1>
+
+{% endblock %}

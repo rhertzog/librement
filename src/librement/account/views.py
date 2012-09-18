@@ -14,7 +14,7 @@ def login(request):
             user.backend = settings.AUTHENTICATION_BACKENDS[0]
             auth.login(request, user)
 
-            return redirect('static:landing')
+            return redirect('dashboard:view')
 
     else:
         form = LoginForm()
@@ -26,4 +26,4 @@ def login(request):
 def logout(request):
     django_logout(request)
 
-    return redirect('static:landing')
+    return redirect('dashboard:view')
