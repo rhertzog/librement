@@ -9,6 +9,7 @@ class ProfileForm(forms.ModelForm):
         fields = (
             'display_name',
             'biography',
+            'rss_url',
         )
 
 class URLForm(forms.ModelForm):
