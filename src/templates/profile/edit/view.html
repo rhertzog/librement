@@ -4,10 +4,41 @@
 
 {% block edit_profile %}
 
-<form method="POST" action="">
+<form method="POST" action="" class="form-horizontal">
   {% csrf_token %}
 
-  {{ form }}
+  <div class="control-group {% if form.errors.display_name %}error{% endif %}">
+    <label class="control-label" for="{{ form.display_name.id_for_label }}">Display name</label>
+    <div class="controls">
+      <input type="text" class="span4" id="{{ form.display_name.id_for_label }}" name="{{ form.display_name.html_name }}" placeholder="Display name" value="{{ form.display_name.value|default:"" }}">
+      <span class="help-inline">
+        {% for x in form.errors.display_name %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="control-group {% if form.errors.biography %}error{% endif %}">
+    <label class="control-label" for="{{ form.biography.id_for_label }}">Biography</label>
+    <div class="controls">
+      <textarea class="span7" rows="8" id="{{ form.biography.id_for_label }}" name="{{ form.biography.html_name }}" placeholder="Biography">{{ form.biography.value|default:"" }}"</textarea>
+      <span class="help-inline">
+        {% for x in form.errors.biography %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="control-group {% if form.errors.rss_url %}error{% endif %}">
+    <label class="control-label" for="{{ form.rss_url.id_for_label }}">RSS feed location</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-globe"></i></span>
+        <input type="text" class="span6" id="{{ form.rss_url.id_for_label }}" name="{{ form.rss_url.html_name }}" placeholder="RSS feed location" value="{{ form.rss_url.value|default:"" }}">
+      </div>
+      <span class="help-inline">
+        {% for x in form.errors.rss_url %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
 
   <div class="well">
     <button type="submit" class="btn btn-primary">Save</button>
