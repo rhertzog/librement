@@ -15,3 +15,4 @@ Depends:
   python-django-south,
   python-imaging.
   python-psycopg2,
+  python-feedparser,
