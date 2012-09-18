@@ -22,6 +22,9 @@
           Company
         {% endcase %}
       {% endswitch %}
+      {% if request.user == user %}
+        <a href="{% url "profile:edit" %}">[edit profile]</a>
+      {% endif %}
       </small>
     </h1>
 
@@ -36,9 +39,6 @@
           {{ user.profile.biography|linebreaksbr }}
         {% endif %}
 
-        {% if request.user == user %}
-          <p><a href="{% url "profile:edit" %}">[edit biography]</a></p>
-        {% endif %}
       </div>
     </div>
   </div>
