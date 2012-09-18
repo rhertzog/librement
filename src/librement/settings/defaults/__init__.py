@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'librement.registration',
     'librement.passwords',
     'librement.profile',
+    'librement.profile.links',
     'librement.static',
     'librement.utils',
 )

@@ -9,6 +9,7 @@
 <ul class="nav nav-pills">
   <li class="{% block profile_edit_basic %}{% endblock %}"><a href="{% url "profile:edit" %}">Basic information</a></li>
   <li class="{% block profile_edit_url %}{% endblock %}"><a href="{% url "profile:edit-url" %}">URL</a></li>
+  <li class="{% block profile_edit_links %}{% endblock %}"><a href="{% url "profile:links:view" %}">Links</a></li>
 </ul>
 
 {% block edit_profile %}{% endblock %}

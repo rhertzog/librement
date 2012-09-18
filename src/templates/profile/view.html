@@ -43,21 +43,22 @@
     </div>
   </div>
 
-  {% comment %}
   <div class="span4">
     <br>
     <br>
 
+    {% if user.links.exists %}
+
     <h3>Links</h3>
 
     <ul class="unstyled">
-      <li><a href="#" rel="nofollow">Link title</a></li>
-      <li><a href="#" rel="nofollow">Link title</a></li>
-      <li><a href="#" rel="nofollow">Link title</a></li>
-      <li><a href="#" rel="nofollow">Link title</a></li>
+      {% for link in user.links.all %}
+      <li><a href="{{ link.url }}" rel="nofollow">{{ link.title }}</a></li>
+      {% endfor %}
     </ul>
+
+    {% endif %}
   </div>
-  {% endcomment %}
 </div>
 
 {% endblock %}

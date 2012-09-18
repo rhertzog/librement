@@ -1,0 +1,40 @@
+{% extends "profile/links/base.html" %}
+
+{% load url from future %}
+
+{% block edit_profile %}
+
+<h2>{% if link %}Editing link "{{ link.title }}"{% else %}Add new link{% endif %}</h2>
+
+<form method="POST" action="" class="form-horizontal">
+  {% csrf_token %}
+
+  <div class="control-group {% if form.errors.title %}error{% endif %}">
+    <label class="control-label" for="{{ form.title.id_for_label }}">Title</label>
+    <div class="controls">
+      <input type="text" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" placeholder="Title" value="{{ form.title.value|default:"" }}">
+      <span class="help-inline">
+        {% for x in form.errors.title %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="control-group {% if form.errors.url %}error{% endif %}">
+    <label class="control-label" for="{{ form.url.id_for_label }}">URL</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-globe"></i></span>
+        <input type="text" id="{{ form.url.id_for_label }}" name="{{ form.url.html_name }}" placeholder="URL" value="{{ form.url.value|default:"" }}">
+      </div>
+      <span class="help-inline">
+        {% for x in form.errors.url %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="well">
+    <button type="submit" class="btn btn-primary">{% if link %}Update{% else %}Add{% endif %}</button>
+  </div>
+</form>
+
+{% endblock %}

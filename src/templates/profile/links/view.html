@@ -1,0 +1,44 @@
+{% extends "profile/links/base.html" %}
+
+{% load url from future %}
+
+{% block edit_profile %}
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for link in request.user.links.all %}
+    <tr>
+      <td>{{ link.title }}</td>
+      <td><a href="{{ link.url }}" rel="nofollow">{{ link.url }}</a></td>
+      <td>
+        <a class="btn" href="{% url "profile:links:edit" link.pk %}"><i class="icon-edit"></i> Edit</a>
+        <form method="POST" action="{% url "profile:links:delete" link.pk %}" class="inline">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit"><i class="icon-remove icon-white"></i> Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3">(no links)</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+<div class="well">
+  <a class="btn btn-primary" href="{% url "profile:links:add" %}"><i class="icon-plus icon-white"></i> Add link</a>
+</div>
+
+{% endblock %}
