@@ -88,7 +88,12 @@ class RegistrationForm(forms.ModelForm):
         # Update Profile model rather than create a new one.
         profile = super(RegistrationForm, self).save(commit=False)
         profile.user = user
-        profile.display_name = u"%s %s" % (user.first_name, user.last_name)
+
+        if profile.account_type == AccountEnum.INDIVIDUAL
+            profile.display_name = u"%s %s" % (user.first_name, user.last_name)
+        else:
+            profile.display_name = profile.organisation
+
         profile.save()
 
         # Send confirmation email
