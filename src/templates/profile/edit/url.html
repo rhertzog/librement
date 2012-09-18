@@ -1,13 +1,26 @@
 {% extends "profile/edit/base.html" %}
 
+{% load url from future %}
+
 {% block profile_edit_url %}active{% endblock %}
 
 {% block edit_profile %}
 
-<form method="POST" action="">
+<form method="POST" action="" class="form-horizontal">
   {% csrf_token %}
 
-  {{ form }}
+  <div class="control-group {% if form.errors.username %}error{% endif %}">
+    <label class="control-label" for="{{ form.username.id_for_label }}">Username</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">{{ settings.SITE_URL }}{% url "profile:view" "" %}</span>
+        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" placeholder="username" value="{{ form.username.value|default:"" }}">
+      </div>
+      <span class="help-inline">
+        {% for x in form.errors.username %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
 
   <div class="well">
     <button type="submit" class="btn btn-primary">Save</button>
