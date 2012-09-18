@@ -33,11 +33,11 @@
       </div>
       <div class="span6">
         {% if user.profile.biography %}
-          {{ user.profile.biography }}
+          {{ user.profile.biography|linebreaksbr }}
         {% endif %}
 
         {% if request.user == user %}
-          <a href="{% url "profile:edit" %}">[edit biography]</a>
+          <p><a href="{% url "profile:edit" %}">[edit biography]</a></p>
         {% endif %}
       </div>
     </div>
