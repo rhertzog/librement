@@ -89,7 +89,7 @@ class RegistrationForm(forms.ModelForm):
         profile = super(RegistrationForm, self).save(commit=False)
         profile.user = user
 
-        if profile.account_type == AccountEnum.INDIVIDUAL
+        if profile.account_type == AccountEnum.INDIVIDUAL:
             profile.display_name = u"%s %s" % (user.first_name, user.last_name)
         else:
             profile.display_name = profile.organisation
