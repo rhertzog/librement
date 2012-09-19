@@ -59,7 +59,11 @@ MEDIA_ROOT = '/srv/storage.librement.net/'
 MEDIA_URL = '/storage/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'swwG4rLmoCMYkKn46r1bOtZLlnUAXFatwY9pv6pzyysYcssHShzse7WSq'
+try:
+    with open('/var/lib/librement/key', 'r') as f:
+        SECRET_KEY = f.read().strip()
+except IOError:
+    SECRET_KEY = 'swwG4rLmoCMYkKn46r1bOtZLlnUAXFatwY9pv6pzyysYcssHShzse7WSq'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

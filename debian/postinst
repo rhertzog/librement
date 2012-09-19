@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#DEBHELPER#
+
+set -eu
+
+mkdir -p /var/lib/librement
+
+if [ ! -f /var/lib/librement/key ]
+then
+	pwgen -s 50 > /var/lib/librement/key
+fi
