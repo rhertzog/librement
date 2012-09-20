@@ -2,7 +2,7 @@ Source: librement
 Section: net
 Priority: optional
 Maintainer: Raphaël Hertzog <raphael@freexian.com>
-Uploaders: Chris Lamb <chris@lambynet.co.uk>
+Uploaders: Chris Lamb <lamby@debian.org>
 Build-Depends: debhelper (>= 9), python (>= 2.6.6-3~)
 Standards-Version: 3.9.3
 
