@@ -11,9 +11,24 @@ Architecture: all
 Depends:
   ${misc:Depends},
   ${python:Depends},
+  pwgen,
   python-bcrypt,
   python-django,
   python-django-south,
   python-imaging,
   python-psycopg2,
   python-feedparser,
+Description: Free software funding platform
+ Librement is a platform to help:
+  - free software developers who want to fund their free software work
+  - free software projects which want to raise money
+ .
+ The platform provides multiple services (highly engaging donation widgets,
+ bookstores, etc.) that each project/developer can setup in a few minutes.
+ The platform takes care of all the administrative work (accounting...)
+ and lets you concentrate on your free software work.
+ .
+ Raising money is a subtle mix of marketing and providing value to users
+ (both individuals and companies) that's hard to achieve. The ready-to-use
+ services provided by Librement build up on the experience of people who
+ managed to raise significant amounts of money for free software projects.
