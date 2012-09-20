@@ -18,6 +18,7 @@ Depends:
   python-imaging,
   python-psycopg2,
   python-feedparser,
+  python-memcache,
 Description: Free software funding platform
  Librement is a platform to help:
   - free software developers who want to fund their free software work
