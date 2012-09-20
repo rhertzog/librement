@@ -6,7 +6,7 @@ export PYTHONDONTWRITEBYTECODE = 1
 	dh $@ --with python2
 
 override_dh_install:
-	dh_install -Xgit.log
+	dh_install -Xgit.log -X.pyc -X.sqlite
 
 override_dh_auto_test:
 	src/librement/manage.py test --verbosity=2

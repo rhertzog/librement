@@ -1,0 +1,5 @@
+# use default excludes
+tar-ignore
+# add supplementary excludes
+tar-ignore = *.sqlite
+tar-ignore = *.pyc
