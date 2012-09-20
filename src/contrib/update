@@ -28,10 +28,6 @@ case "${PROJECT}" in
 		Git git://github.com/twitter/bootstrap.git ${PROJECT}
 		;;
 
-	debug_toolbar)
-		Git git://github.com/robhudson/django-debug-toolbar.git ${PROJECT} ${PROJECT}
-		;;
-
 	debug_toolbar_user_panel)
 		Git git://github.com/playfire/django-debug-toolbar-user-panel.git ${PROJECT} ${PROJECT}
 		;;
