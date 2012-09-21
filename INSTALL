@@ -1,0 +1,69 @@
+Requirements
+------------
+
+* Django (>= 1.4.1)
+* South
+* py-bcrypt
+* The Python Imaging Library (PIL)
+* feedparser
+* django-debug-toolbar
+* psycopg (>= 2) (for production setup with PostgreSQL)
+* python-memcached + memcached (for production setup)
+
+Which can be summed up as this apt-get invocation:
+$ apt-get install python-django python-django-south python-bcrypt \
+                  python-imaging python-psycopg2 python-feedparser \
+		  python-memcache python-django-debug-toolbar
+
+Running from the git checkout
+-----------------------------
+For quick tries, you can run the Django project directly from sources:
+$ cd src/librement
+$ ./manage.py syncdb --noinput --migrate
+[…]
+$ ./manage.py runserver
+
+Installing and running it on a server
+-------------------------------------
+To run it on a real server, I recommend you to install it as a Debian
+package.
+
+$ dpkg-buildpackage -us -uc
+$ sudo dpkg -i ../librement_<version>_all.deb
+$ sudo apt-get -f install
+
+The production setup uses Postgresql and a librement account which owns the
+librement database:
+$ sudo adduser --system librement --group
+$ sudo postgres createdb -O librement librement
+$ sudo sh -c 'echo "local librement librement peer" >>/etc/postgresql/9.1/main/pg_hba.conf'
+$ sudo service postgresql reload
+
+$ cd /usr/share/librement/librement
+$ sudo -u librement ./manage.py syncdb --noinput --migrate
+
+TODO: document the apache/gunicorn/nginx setup
+
+Creating a superuser
+--------------------
+
+You should register your first user through the website and then give
+it admin right (and note its username at the same time):
+
+  $ ./manage.py shell
+  […]
+  >>> from django.contrib.auth.models import User
+  >>> user = User.objects.get(pk=1)
+  >>> user.is_superuser = True
+  >>> user.is_staff = True
+  >>> user.save()
+  >>> user.username
+  u'raphaelhertzog'
+  >>> ^D
+
+or
+
+  $ ./manage.py dbshell
+  […]
+  > UPDATE auth_user SET is_superuser = 1, is_staff = 1 WHERE id = 1;
+  > ^D
