@@ -25,6 +25,16 @@
         </div>
       </div>
 
+      <div class="control-group {% if form.errors.organisation %}error{% endif %}">
+        <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation (optional)</label>
+        <div class="controls">
+          <input type="text" id="{{ form.organisation.id_for_label }}" name="{{ form.organisation.html_name }}" placeholder="Organisation" value="{{ form.organisation.value|default:"" }}">
+          <span class="help-inline">
+            {% for x in form.errors.organisation %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
       <div class="control-group {% if form.errors.first_name or form.errors.last_name %}error{% endif %}">
         <label class="control-label" for="{{ form.first_name.id_for_label }}">Name</label>
         <div class="controls">
@@ -76,16 +86,6 @@
           </select>
           <span class="help-inline">
             {% for x in form.errors.country %}{{ x }}{% endfor %}
-          </span>
-        </div>
-      </div>
-
-      <div class="control-group {% if form.errors.organisation %}error{% endif %}">
-        <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation (optional)</label>
-        <div class="controls">
-          <input type="text" id="{{ form.organisation.id_for_label }}" name="{{ form.organisation.html_name }}" placeholder="Organisation" value="{{ form.organisation.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.organisation %}{{ x }}{% endfor %}
           </span>
         </div>
       </div>
