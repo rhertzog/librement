@@ -10,6 +10,21 @@
     <div class="well row">
       <legend>Register</legend>
 
+      <div class="control-group {% if form.errors.account_type %}error{% endif %}">
+        <label class="control-label" for="{{ form.account_type.id_for_label }}">Account type</label>
+        <div class="controls">
+          {% for enum,display in form.fields.account_type.choices %}
+          <label class="radio">
+            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %}>
+            {{ display }}
+          </label>
+          {% endfor %}
+          <span class="help-inline">
+            {% for x in form.errors.account_type %}{{ x }}{% endfor %}
+          </span>
+        </div>
+      </div>
+
       <div class="control-group {% if form.errors.first_name or form.errors.last_name %}error{% endif %}">
         <label class="control-label" for="{{ form.first_name.id_for_label }}">Name</label>
         <div class="controls">
@@ -65,21 +80,6 @@
           </select>
           <span class="help-inline">
             {% for x in form.errors.country %}{{ x }}{% endfor %}
-          </span>
-        </div>
-      </div>
-
-      <div class="control-group {% if form.errors.account_type %}error{% endif %}">
-        <label class="control-label" for="{{ form.account_type.id_for_label }}">Account type</label>
-        <div class="controls">
-          {% for enum,display in form.fields.account_type.choices %}
-          <label class="radio">
-            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %}>
-            {{ display }}
-          </label>
-          {% endfor %}
-          <span class="help-inline">
-            {% for x in form.errors.account_type %}{{ x }}{% endfor %}
           </span>
         </div>
       </div>
