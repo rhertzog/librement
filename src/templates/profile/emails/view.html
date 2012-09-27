@@ -1,0 +1,27 @@
+{% extends "profile/emails/base.html" %}
+
+{% load url from future %}
+
+{% block edit_profile %}
+
+<p>
+  The following email addresses are associated with your account:
+</p>
+
+<ul>
+    {% for email in request.user.emails.all %}
+    <li>
+      <code>{{ email.email }}</code>
+      <form method="POST" action="{% url "profile:emails:delete" email.pk %}" class="inline">
+        {% csrf_token %}
+        <button class="btn btn-danger btn-small" type="submit"><i class="icon-remove icon-white"></i> Delete</button>
+      </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="well">
+  <a class="btn btn-primary" href="{% url "profile:emails:add" %}"><i class="icon-plus icon-white"></i> Add new email address</a>
+</div>
+
+{% endblock %}

@@ -13,6 +13,7 @@ from django.conf.urls.defaults import patterns, url, include
 
 urlpatterns = patterns('librement.profile.views',
     (r'', include('librement.profile.links.urls', namespace='links')),
+    (r'', include('librement.profile.emails.urls', namespace='emails')),
 
     url(r'^people/(?P<username>[^/]*)$', 'view',
         name='view'),

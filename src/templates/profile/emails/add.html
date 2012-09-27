@@ -1,0 +1,30 @@
+{% extends "profile/emails/base.html" %}
+
+{% load url from future %}
+
+{% block edit_profile %}
+
+<h2>Add email address</h2>
+
+<form method="POST" action="" class="form-horizontal">
+  {% csrf_token %}
+
+  <div class="control-group {% if form.errors.email %}error{% endif %}">
+    <label class="control-label" for="{{ form.email.id_for_label }}">Email address</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+        <input type="text" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" placeholder="Email address" value="{{ form.email.value|default:"" }}">
+      </div>
+      <span class="help-inline">
+        {% for x in form.errors.email %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
+  <div class="well">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
+</form>
+
+{% endblock %}
