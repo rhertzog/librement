@@ -15,7 +15,7 @@
         <div class="controls">
           {% for enum,display in form.fields.account_type.choices %}
           <label class="radio inline">
-            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %} type-show-organisation="1">
+            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %}>
             {{ display }}
           </label>
           {% endfor %}
