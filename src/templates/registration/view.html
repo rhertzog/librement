@@ -1,5 +1,7 @@
 {% extends "base/base.html" %}
 
+{% block body_classes %}f_registration{% endblock %}
+
 {% block content %}
 
 <section id="registration">
@@ -15,7 +17,7 @@
         <div class="controls">
           {% for enum,display in form.fields.account_type.choices %}
           <label class="radio inline">
-            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %}>
+            <input type="radio" name="{{ form.account_type.html_name }}" value="{{ enum.slug }}" {% if form.account_type.value == enum %}checked="checked"{% endif %} class="{% if enum.slug == "individual" %}hide-organisation{% endif %}">
             {{ display }}
           </label>
           {% endfor %}

@@ -18,6 +18,20 @@ $.extend({
   }
 });
 
+$.feature('f_registration', function() {
+  var organisation = $('input[name=organisation]');
+
+  $('input[name=account_type]').on('change', function(x) {
+    if (organisation.val() != '') {
+      return;
+    }
+
+    organisation
+      .parents('.control-group')
+      .toggleClass('hide', $(x.target).hasClass('hide-organisation'));
+  });
+});
+
 $.feature('f_profile', function() {
   var container = $('.rss');
 
