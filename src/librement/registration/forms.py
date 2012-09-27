@@ -35,12 +35,6 @@ class RegistrationForm(forms.ModelForm):
         fields = (
             'account_type',
             'organisation',
-            'address_1',
-            'address_2',
-            'city',
-            'region',
-            'zipcode',
-            'country',
         )
 
     def clean_email(self):

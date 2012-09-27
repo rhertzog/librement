@@ -95,41 +95,6 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label">Address (optional)</label>
-        <div class="controls">
-          <input type="text" id="{{ form.address_1.id_for_label }}" name="{{ form.address_1.html_name }}" placeholder="Address" value="{{ form.address_1.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.address_1 %}{{ x }}{% endfor %}
-          </span>
-          <br>
-          <br>
-          <input type="text" id="{{ form.address_2.id_for_label }}" name="{{ form.address_2.html_name }}" placeholder="Address" value="{{ form.address_2.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.address_2 %}{{ x }}{% endfor %}
-          </span>
-          <br>
-          <br>
-          <input type="text" id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" placeholder="City" value="{{ form.city.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.city %}{{ x }}{% endfor %}
-          </span>
-          <br>
-          <br>
-          <input type="text" id="{{ form.region.id_for_label }}" name="{{ form.region.html_name }}" placeholder="State/region" value="{{ form.region.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.region %}{{ x }}{% endfor %}
-          </span>
-          <br>
-          <br>
-          <input type="text" id="{{ form.zipcode.id_for_label }}" name="{{ form.zipcode.html_name }}" placeholder="Zipcode" value="{{ form.zipcode.value|default:"" }}">
-          <span class="help-inline">
-            {% for x in form.errors.zipcode %}{{ x }}{% endfor %}
-          </span>
-        </div>
-      </div>
-
-
-      <div class="control-group">
         <div class="controls">
           <button type="submit" class="btn btn-primary">Register</button>
         </div>
