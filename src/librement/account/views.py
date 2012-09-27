@@ -17,6 +17,9 @@ from django.contrib.auth import logout as django_logout
 from .forms import LoginForm
 
 def login(request):
+    if request.user.is_authenticated():
+        return redirect(settings.LOGIN_REDIRECT_URL)
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
