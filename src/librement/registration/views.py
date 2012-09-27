@@ -9,12 +9,16 @@
 # this file, may be copied, modified, propagated, or distributed except
 # according to the terms contained in the LICENSE file.
 
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from .forms import RegistrationForm
 
 def view(request):
+    if request.user.is_authenticated():
+        return redirect(settings.LOGIN_REDIRECT_URL)
+
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
 
