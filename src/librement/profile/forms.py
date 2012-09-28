@@ -62,17 +62,11 @@ class AccountForm(dict):
     def __init__(self, user, *args, **kwargs):
         self.user = user
 
-        self['user'] = AccountUserForm(
-            instance=user,
-            *args,
-            **kwargs
-        )
-
-        self['profile'] = AccountProfileForm(
-            instance=user.profile,
-            *args,
-            **kwargs
-        )
+        for key, klass, fn in (
+            ('user', AccountUserForm, lambda x: x),
+            ('profile', AccountProfileForm, lambda x: x.profile),
+        ):
+            self[key] = klass(instance=fn(user), *args, **kwargs)
 
     def save(self):
         return [x.save() for x in self.values()]
