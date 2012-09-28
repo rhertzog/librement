@@ -12,6 +12,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from .enums import AccountEnum
 from .models import Profile
 
 class ProfileForm(forms.ModelForm):
@@ -35,6 +36,16 @@ class AccountForm(forms.ModelForm):
             'zipcode',
             'country',
         )
+
+    def clean_organisation(self):
+        val = self.cleaned_data['organisation']
+
+        if self.instance.account_type != AccountEnum.INDIVIDUAL and val == '':
+            raise forms.ValidationError(
+                "Required field for company/non-profit accounts"
+            )
+
+        return val
 
 class URLForm(forms.ModelForm):
     username = forms.RegexField(regex=r'^[\w-]+$')
