@@ -25,6 +25,9 @@ class ProfileForm(forms.ModelForm):
         )
 
 class AccountUserForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=30) # implicit required=True
+    last_name = forms.CharField(max_length=30)
+
     class Meta:
         model = User
         fields = (
