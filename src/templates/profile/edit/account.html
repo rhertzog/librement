@@ -7,6 +7,18 @@
 <form method="POST" action="" class="form-horizontal">
   {% csrf_token %}
 
+  <div class="control-group {% if form.user.errors.first_name or form.user.errors.last_name %}error{% endif %}">
+    <label class="control-label" for="{{ form.user.first_name.id_for_label }}">Name</label>
+    <div class="controls">
+      <input type="text" id="{{ form.user.first_name.id_for_label }}" name="{{ form.user.first_name.html_name }}" placeholder="First name" value="{{ form.user.first_name.value|default:"" }}">
+      <input type="text" id="{{ form.user.last_name.id_for_label }}" name="{{ form.user.last_name.html_name }}" placeholder="Last name" value="{{ form.user.last_name.value|default:"" }}">
+      <span class="help-inline">
+        {% for x in form.user.errors.first_name %}{{ x }}{% endfor %}
+        {% for x in form.user.errors.last_name %}{{ x }}{% endfor %}
+      </span>
+    </div>
+  </div>
+
   <div class="control-group {% if form.profile.errors.organisation %}error{% endif %} {% if form.profile.account_type.value == "individual" %}hide{% endif %}">
     <label class="control-label" for="{{ form.profile.organisation.id_for_label }}">Organisation</label>
     <div class="controls">

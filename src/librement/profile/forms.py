@@ -24,6 +24,14 @@ class ProfileForm(forms.ModelForm):
             'rss_url',
         )
 
+class AccountUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+        )
+
 class AccountProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
@@ -50,6 +58,12 @@ class AccountProfileForm(forms.ModelForm):
 class AccountForm(dict):
     def __init__(self, user, *args, **kwargs):
         self.user = user
+
+        self['user'] = AccountUserForm(
+            instance=user,
+            *args,
+            **kwargs
+        )
 
         self['profile'] = AccountProfileForm(
             instance=user.profile,
