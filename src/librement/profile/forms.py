@@ -24,7 +24,7 @@ class ProfileForm(forms.ModelForm):
             'rss_url',
         )
 
-class AccountForm(forms.ModelForm):
+class AccountProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
@@ -46,6 +46,22 @@ class AccountForm(forms.ModelForm):
             )
 
         return val
+
+class AccountForm(dict):
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+
+        self['profile'] = AccountProfileForm(
+            instance=user.profile,
+            *args,
+            **kwargs
+        )
+
+    def save(self):
+        return [x.save() for x in self.values()]
+
+    def is_valid(self):
+        return all(x.is_valid() for x in self.values())
 
 class URLForm(forms.ModelForm):
     username = forms.RegexField(regex=r'^[\w-]+$')

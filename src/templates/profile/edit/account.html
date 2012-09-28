@@ -7,12 +7,12 @@
 <form method="POST" action="" class="form-horizontal">
   {% csrf_token %}
 
-  <div class="control-group {% if form.errors.organisation %}error{% endif %} {% if form.account_type.value == "individual" %}hide{% endif %}">
-    <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation</label>
+  <div class="control-group {% if form.profile.errors.organisation %}error{% endif %} {% if form.profile.account_type.value == "individual" %}hide{% endif %}">
+    <label class="control-label" for="{{ form.profile.organisation.id_for_label }}">Organisation</label>
     <div class="controls">
-      <input type="text" id="{{ form.organisation.id_for_label }}" name="{{ form.organisation.html_name }}" placeholder="Organisation" value="{{ form.organisation.value|default:"" }}">
+      <input type="text" id="{{ form.profile.organisation.id_for_label }}" name="{{ form.profile.organisation.html_name }}" placeholder="Organisation" value="{{ form.profile.organisation.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.organisation %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.organisation %}{{ x }}{% endfor %}
       </span>
     </div>
   </div>
@@ -20,47 +20,47 @@
   <div class="control-group">
     <label class="control-label">Address</label>
     <div class="controls">
-      <input type="text" id="{{ form.address_1.id_for_label }}" name="{{ form.address_1.html_name }}" placeholder="Address" value="{{ form.address_1.value|default:"" }}">
+      <input type="text" id="{{ form.profile.address_1.id_for_label }}" name="{{ form.profile.address_1.html_name }}" placeholder="Address" value="{{ form.profile.address_1.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.address_1 %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.address_1 %}{{ x }}{% endfor %}
       </span>
       <br>
       <br>
-      <input type="text" id="{{ form.address_2.id_for_label }}" name="{{ form.address_2.html_name }}" placeholder="Address" value="{{ form.address_2.value|default:"" }}">
+      <input type="text" id="{{ form.profile.address_2.id_for_label }}" name="{{ form.profile.address_2.html_name }}" placeholder="Address" value="{{ form.profile.address_2.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.address_2 %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.address_2 %}{{ x }}{% endfor %}
       </span>
       <br>
       <br>
-      <input type="text" id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" placeholder="City" value="{{ form.city.value|default:"" }}">
+      <input type="text" id="{{ form.profile.city.id_for_label }}" name="{{ form.profile.city.html_name }}" placeholder="City" value="{{ form.profile.city.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.city %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.city %}{{ x }}{% endfor %}
       </span>
       <br>
       <br>
-      <input type="text" id="{{ form.region.id_for_label }}" name="{{ form.region.html_name }}" placeholder="State/region" value="{{ form.region.value|default:"" }}">
+      <input type="text" id="{{ form.profile.region.id_for_label }}" name="{{ form.profile.region.html_name }}" placeholder="State/region" value="{{ form.profile.region.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.region %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.region %}{{ x }}{% endfor %}
       </span>
       <br>
       <br>
-      <input type="text" id="{{ form.zipcode.id_for_label }}" name="{{ form.zipcode.html_name }}" placeholder="Zipcode" value="{{ form.zipcode.value|default:"" }}">
+      <input type="text" id="{{ form.profile.zipcode.id_for_label }}" name="{{ form.profile.zipcode.html_name }}" placeholder="Zipcode" value="{{ form.profile.zipcode.value|default:"" }}">
       <span class="help-inline">
-        {% for x in form.errors.zipcode %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.zipcode %}{{ x }}{% endfor %}
       </span>
     </div>
   </div>
 
-  <div class="control-group {% if form.errors.country %}error{% endif %}">
-    <label class="control-label" for="{{ form.country.id_for_label }}">Country</label>
+  <div class="control-group {% if form.profile.errors.country %}error{% endif %}">
+    <label class="control-label" for="{{ form.profile.country.id_for_label }}">Country</label>
     <div class="controls">
-      <select name="{{ form.country.html_name }}" id="{{ form.country.id_for_label }}" class="span4">
-        {% for enum,display in form.fields.country.choices %}
-          <option value="{{ enum.slug }}" {% if form.country.value == enum %}selected="selected"{% endif %}>{{ display }}</option>
+      <select name="{{ form.profile.country.html_name }}" id="{{ form.profile.country.id_for_label }}" class="span4">
+        {% for enum,display in form.profile.fields.country.choices %}
+          <option value="{{ enum.slug }}" {% if form.profile.country.value == enum %}selected="selected"{% endif %}>{{ display }}</option>
         {% endfor %}
       </select>
       <span class="help-inline">
-        {% for x in form.errors.country %}{{ x }}{% endfor %}
+        {% for x in form.profile.errors.country %}{{ x }}{% endfor %}
       </span>
     </div>
   </div>

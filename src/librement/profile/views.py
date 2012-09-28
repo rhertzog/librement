@@ -56,7 +56,7 @@ def edit(request):
 @login_required
 def edit_account(request):
     if request.method == 'POST':
-        form = AccountForm(request.POST, instance=request.user.profile)
+        form = AccountForm(request.user, request.POST)
 
         if form.is_valid():
             form.save()
@@ -69,7 +69,7 @@ def edit_account(request):
             return redirect('profile:edit-account')
 
     else:
-        form = AccountForm(instance=request.user.profile)
+        form = AccountForm(request.user)
 
     return render(request, 'profile/edit/account.html', {
         'form': form,
