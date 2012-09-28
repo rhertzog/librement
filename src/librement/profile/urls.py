@@ -25,4 +25,6 @@ urlpatterns = patterns('librement.profile.views',
         name='edit-url'),
     url(r'^profile/edit/picture$', 'edit_picture',
         name='edit-picture'),
+    url(r'^profile/edit/password$', 'edit_password',
+        name='edit-password'),
 )

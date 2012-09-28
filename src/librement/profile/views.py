@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 
 from librement.utils.ajax import ajax
 
-from .forms import ProfileForm, URLForm, PictureForm
+from .forms import ProfileForm, URLForm, PictureForm, PasswordForm
 from .utils import get_rss_feed
 
 def view(request, username):
@@ -88,5 +88,24 @@ def edit_picture(request):
         form = PictureForm(request.user)
 
     return render(request, 'profile/edit/picture.html', {
+        'form': form,
+    })
+
+@login_required
+def edit_password(request):
+    if request.method == 'POST':
+        form = PasswordForm(request.user, request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, "Password changed successfully")
+
+            return redirect('profile:edit-password')
+
+    else:
+        form = PasswordForm(request.user)
+
+    return render(request, 'profile/edit/password.html', {
         'form': form,
     })

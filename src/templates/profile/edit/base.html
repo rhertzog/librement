@@ -12,6 +12,7 @@
   <li class="{% block profile_edit_url %}{% endblock %}"><a href="{% url "profile:edit-url" %}">URL</a></li>
   <li class="{% block profile_edit_links %}{% endblock %}"><a href="{% url "profile:links:view" %}">Links</a></li>
   <li class="{% block profile_edit_picture %}{% endblock %}"><a href="{% url "profile:edit-picture" %}">Picture</a></li>
+  <li class="{% block profile_edit_password %}{% endblock %}"><a href="{% url "profile:edit-password" %}">Password</a></li>
 </ul>
 
 {% block edit_profile %}{% endblock %}

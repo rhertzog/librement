@@ -45,3 +45,41 @@ class PictureForm(forms.Form):
             self.cleaned_data['picture']
         )
         self.user.profile.save()
+
+class PasswordForm(forms.Form):
+    password_old = forms.CharField()
+    password = forms.CharField()
+    password_confirm = forms.CharField()
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+
+        super(PasswordForm, self).__init__(*args, **kwargs)
+
+    def save(self):
+        self.user.set_password(self.cleaned_data['password'])
+        self.user.save()
+
+    def clean_password_old(self):
+        val = self.cleaned_data['password_old']
+
+        if not self.user.check_password(val):
+            raise forms.ValidationError(
+                "Password is not correct."
+            )
+
+        return val
+
+    def clean_password_confirm(self):
+        password = self.cleaned_data.get('password', '')
+        password_confirm = self.cleaned_data['password_confirm']
+
+        if password != password_confirm:
+            raise forms.ValidationError("Passwords do not match.")
+
+        if len(password) < 8:
+            raise forms.ValidationError(
+                "Password must be at least 8 characters"
+            )
+
+        return password
