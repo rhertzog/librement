@@ -23,6 +23,19 @@ class ProfileForm(forms.ModelForm):
             'rss_url',
         )
 
+class AccountForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'organisation',
+            'address_1',
+            'address_2',
+            'city',
+            'region',
+            'zipcode',
+            'country',
+        )
+
 class URLForm(forms.ModelForm):
     username = forms.RegexField(regex=r'^[\w-]+$')
 

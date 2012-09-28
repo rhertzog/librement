@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 
 from librement.utils.ajax import ajax
 
-from .forms import ProfileForm, URLForm, PictureForm, PasswordForm
+from .forms import ProfileForm, AccountForm, URLForm, PictureForm, PasswordForm
 from .utils import get_rss_feed
 
 def view(request, username):
@@ -50,6 +50,28 @@ def edit(request):
         form = ProfileForm(instance=request.user.profile)
 
     return render(request, 'profile/edit/view.html', {
+        'form': form,
+    })
+
+@login_required
+def edit_account(request):
+    if request.method == 'POST':
+        form = AccountForm(request.POST, instance=request.user.profile)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(
+                request,
+                "Account updated successfully",
+            )
+
+            return redirect('profile:edit-account')
+
+    else:
+        form = AccountForm(instance=request.user.profile)
+
+    return render(request, 'profile/edit/account.html', {
         'form': form,
     })
 
