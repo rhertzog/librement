@@ -28,7 +28,7 @@
       </div>
 
       <div class="control-group {% if form.errors.organisation %}error{% endif %} {% if form.account_type.value == "individual" %}hide{% endif %}">
-        <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation (optional)</label>
+        <label class="control-label" for="{{ form.organisation.id_for_label }}">Organisation</label>
         <div class="controls">
           <input type="text" id="{{ form.organisation.id_for_label }}" name="{{ form.organisation.html_name }}" placeholder="Organisation" value="{{ form.organisation.value|default:"" }}">
           <span class="help-inline">
