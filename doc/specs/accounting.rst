@@ -88,6 +88,8 @@ Each account is specified by:
   * revenue
   * expense
 
+* a currency to be imposed on all lines affecting this account
+  (can be unset if the account can hold multiple currencies)
 * an internal identifier which is unique when combined with the accounting
   book. This will be used by other objects to find out associated
   accounts (e.g. a Product will have Revenues accounts, Users will have
@@ -97,16 +99,23 @@ Each transaction includes:
 
 * a parent accounting book
 * a timestamp
-* a currency
 * a textual description
-* a set of at least two lines
+* a set of at least two entries
 
-Each transaction line is always part of a transaction and includes:
+Each transaction entry is always part of a transaction and includes:
 
 * an associated account (which must be part of the same book as the parent
   transaction)
-* a type of operation (debit/credit)
-* an amount of money
+* an amount of money (negative means debit, positive means credit)
+* a currency
+* an optional description
+
+Having different currencies in the same transaction means that we're
+recording a currency conversion. The default functions should assume that
+we have the same currency in a transaction and currency conversion should
+have a dedicated API (that doesn't impose the equality between debits and
+credits, but that ensures that we're doing a conversion between two
+assets accounts and maybe an expense accounts for conversion fees).
 
 Django integration
 ^^^^^^^^^^^^^^^^^^
